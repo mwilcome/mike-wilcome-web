@@ -1,1 +1,17 @@
-<p>upgrades works!</p>
+<section class="upgrades-section">
+  <h2>Upgrades</h2>
+  <div class="upgrade-list">
+    @for (plant of gameService.plants(); track plant.id) {
+      <div class="upgrade-item">
+        Buy {{ plant.id }} (Cost: {{ plant.cost }})
+        @if (gameService.canAfford(plant)) {
+          <button (click)="gameService.buyPlant(plant.id)">Buy</button>
+        } @else {
+          <p>Can't afford</p>
+        }
+      </div>
+    } @empty {
+      <p>No upgrades available.</p>
+    }
+  </div>
+</section>

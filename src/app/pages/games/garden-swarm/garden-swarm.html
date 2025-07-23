@@ -1,7 +1,9 @@
-<main>
-  <h1>Garden Swarm</h1>
-  <p>Blooms: {{ gameService.blooms() }}</p>
-  <app-grid></app-grid>
-  <app-upgrades></app-upgrades>
-  <app-stats></app-stats>
+<main class="game-container">
+  @if (gameService.isLoaded()) {
+    <app-stats></app-stats>
+    <app-grid></app-grid>
+    <app-upgrades></app-upgrades>
+  } @else {
+    <p>Loading your garden...</p>
+  }
 </main>

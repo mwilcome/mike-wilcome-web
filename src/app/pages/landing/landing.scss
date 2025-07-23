@@ -154,10 +154,10 @@
     border-radius: 1.5rem;
     box-shadow: var(--neon-shadow);
     transition: transform 0.4s ease, filter 0.4s ease;
-    transform: rotate(calc(var(--index, 0) * 4deg - 8deg)); /* Vary rotation per index; set --index via inline style in HTML */
+    transform: rotate(calc(var(--index, 0) * 4deg - 8deg));
 
     &:hover {
-      transform: scale(1.15) rotate(0deg);
+      transform: scale(1.15) rotate(0deg) translateY(-10px); /* Bounce up */
       filter: brightness(1.3);
     }
   }

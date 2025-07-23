@@ -1,0 +1,26 @@
+@use 'sass:color';
+
+$bg-color: #00008B; /* Define for color.adjust */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, $bg-color, color.adjust($bg-color, $lightness: -20%));
+  color: var(--text-color);
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .game-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

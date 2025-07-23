@@ -1,1 +1,13 @@
-<p>grid works!</p>
+<section class="grid-section">
+  <h2>Garden Grid</h2>
+  <button class="harvest-button" (click)="manualHarvest()">Harvest Bloom</button>
+  <div class="plant-grid">
+    @for (plant of gameService.plants(); track plant.id) {
+      <div class="plant-item" (click)="harvest(plant)">
+        {{ plant.id }}: {{ plant.count }}
+      </div>
+    } @empty {
+      <p>No plants yet—buy some!</p>
+    }
+  </div>
+</section>

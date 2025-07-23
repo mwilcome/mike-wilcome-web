@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: var(--bg-color); /* Deep blue, no gradient */
+  color: var(--text-color);
+}
+
+.games-header {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 139, 0.8); /* Semi-transparent blue for depth */
+  border-bottom: 3px solid #FFD700; /* Yellow accent for trash-polka */
+
+  h1 {
+    font-family: var(--retro-font);
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #00FFFF, 0 0 10px #FF1493; /* Subtle neon */
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #FFD700;
+  }
+}
+
+.game-list {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.game-link {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #000000; /* Black base */
+  color: #FFFFFF;
+  border: 2px solid #FFD700;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 8px #00FFFF; /* Neon glow on hover */
+  }
+}
+
+@media (max-width: 768px) {
+  .game-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
