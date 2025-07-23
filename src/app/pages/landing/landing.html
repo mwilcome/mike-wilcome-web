@@ -1,0 +1,30 @@
+<header class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Mike Wilcome's Personal Dev Playground</h1>
+    <p>A hub for my creative games and projects. Dive into incremental adventures like Garden Swarm!</p>
+    <a routerLink="/games" class="cta-button">Explore Games</a>
+  </div>
+  <img src="assets/portraits/portrait2.JPG" alt="Artistic portrait of Mike in rainbow style" class="hero-image">
+</header>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>I'm Mike Wilcome, a Principal Software Engineer passionate about building fun, engaging web experiences. Check out my games or get in touch.</p>
+</section>
+
+<section class="gallery" aria-label="Mike's Artistic Avatars">
+  <h2>My Artistic Avatars</h2>
+  <div class="portrait-grid">
+    <div class="portrait-grid">
+      @for (portrait of portraits(); track $index) {
+        <img [src]="portrait" alt="Artistic portrait variant {{ $index + 1 }}" class="portrait" style="--index: {{ $index }};">
+      } @empty {
+        <p>No portraits available yet.</p>
+      }
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Mike Wilcome. All rights reserved.</p>
+</footer>

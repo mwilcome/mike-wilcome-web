@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap');
+
+:root {
+  --primary-color: #FF1493; /* Hot pink from jacket patterns */
+  --accent-color: #FFD700; /* Yellow accents */
+  --bg-color: #00008B; /* Deep blue-purple background vibe */
+  --text-color: #FFFFFF; /* White for contrast on chaos */
+  --font-family: 'Inter', sans-serif;
+  --retro-font: 'Press Start 2P', monospace;
+  --trash-gradient: linear-gradient(135deg, #FF1493, #00FFFF, #FFD700, #32CD32, #FF4500, #9370DB); /* Rainbow collage from image */
+  --stippled-bg: repeating-radial-gradient(circle, #FFFFFF 0px, #FFFFFF 1px, transparent 1px, transparent 4px); /* Dotted chaos */
+  --collage-pattern: radial-gradient(circle at 50% 50%, rgba(255,20,147,0.3) 0%, rgba(0,255,255,0.3) 20%, rgba(255,215,0,0.3) 40%, transparent 60%); /* Abstract shapes overlay */
+  --neon-shadow: 0 0 10px #00FFFF, 0 0 20px #FF1493; /* Glowing edges for trash-polka pop */
+  --primary-hover: #00FFFF; /* Cyan hover for flair */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  position: relative;
+
+  &::before { /* Global collage overlay for entire site chaos */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--collage-pattern), var(--stippled-bg);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  filter: drop-shadow(var(--neon-shadow));
+}
