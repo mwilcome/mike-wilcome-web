@@ -1,9 +1,10 @@
+@use '../garden-swarm-base' as base;
+
 .left-sidebar {
-  background: rgba(255,255,255,0.1);
-  padding: 1rem;
-  border-radius: 0.5rem;
+  @include base.panel-style;
 
   .seed-item {
     margin-bottom: 0.5rem;
+    color: base.$garden-text;
   }
 }

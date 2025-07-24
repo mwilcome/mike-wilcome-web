@@ -1,0 +1,50 @@
+// Garden Swarm base styles: Shared variables, mixins, and resets for all game components
+
+@use 'sass:color';
+
+// Color palette for garden theme
+$garden-primary: #4CAF50; // Green for growth
+$garden-accent: #FFC107; // Yellow for blooms/sun
+$garden-bg-dark: #1E1E2F; // Deep night soil
+$garden-bg-light: color.adjust($garden-bg-dark, $lightness: 10%);
+$garden-text: #FFFFFF;
+$garden-border: rgba(255, 255, 255, 0.2);
+$garden-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+$garden-hover: color.adjust($garden-primary, $lightness: 10%);
+
+// Typography
+$font-main: 'Inter', sans-serif;
+$font-retro: 'Press Start 2P', monospace;
+
+// Mixins for common styles
+@mixin panel-style {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: $garden-shadow;
+}
+
+@mixin button-style($bg: $garden-primary) {
+  background: $bg;
+  color: $garden-text;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: color.adjust($bg, $lightness: 5%);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Resets for game elements
+.game-element {
+  font-family: $font-main;
+  color: $garden-text;
+}

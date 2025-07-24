@@ -4,6 +4,7 @@
   <div class="plant-grid">
     @for (plant of gameService.plants(); track plant.id) {
       <div class="plant-item" (click)="harvest(plant)" [@plantSway]>
+        @if (plant.id === 'seed') { 🌱 } @else if (plant.id === 'flower') { 🌸 } @else if (plant.id === 'tree') { 🌳 }
         {{ plant.id }}: {{ plant.count.toString() }}
       </div>
     } @empty {

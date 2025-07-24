@@ -1,3 +1,5 @@
+@use '../garden-swarm-base' as base;
+
 .top-bar {
   position: fixed;
   top: 0;
@@ -5,9 +7,9 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 2rem; /* Increased padding on left/right */
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  padding: 1rem 2rem;
+  background: rgba(base.$garden-bg-dark, 0.8);
+  color: base.$garden-text;
   z-index: 10;
 }
 
@@ -23,15 +25,15 @@
 
 .settings-modal {
   position: absolute;
-  top: 100%; /* Below button */
-  right: 0; /* Right-aligned to button */
+  top: 100%;
+  right: 0;
   width: 250px;
   max-height: 300px;
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
+  background: rgba(base.$garden-bg-dark, 0.9);
+  color: base.$garden-text;
   padding: 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: base.$garden-shadow;
   z-index: 20;
   overflow-y: auto;
 
@@ -41,24 +43,28 @@
     gap: 1rem;
   }
 
-  button, label {
+  button {
+    @include base.button-style(base.$garden-accent);
+  }
+
+  label {
     width: 100%;
+    color: base.$garden-text;
   }
 }
 
-/* Enhanced responsive handling */
 @media (max-width: 768px) {
   .top-bar {
-    padding: 1rem; /* Reduce padding on mobile */
+    padding: 1rem;
   }
 
   .settings-wrapper {
-    margin-right: 0.5rem; /* Less margin on mobile */
+    margin-right: 0.5rem;
   }
 
   .settings-modal {
-    right: -10px; /* Slight left shift */
-    width: 200px; /* Narrower on mobile */
+    right: -10px;
+    width: 200px;
   }
 }
 
@@ -70,7 +76,7 @@
   }
 
   .settings-wrapper {
-    margin: 0.5rem 0 0 0; /* Stack below resources */
+    margin: 0.5rem 0 0 0;
   }
 
   .settings-modal {

@@ -16,4 +16,6 @@ import { BottomBar } from './bottom-bar/bottom-bar';
 })
 export class GardenSwarm {
   constructor(public gameService: GameService) {}
+
+  protected readonly Math = Math;
 }

@@ -1,3 +1,5 @@
+@use '../garden-swarm-base' as base;
+
 .grid-section {
   flex: 1;
 }
@@ -9,28 +11,45 @@
 }
 
 .plant-item {
-  padding: 0.5rem;
+  padding: 0.75rem; // Increased padding for better spacing
   margin: 0.5rem;
-  background: rgba(0, 255, 0, 0.2);
+  background: rgba(base.$garden-primary, 0.2);
   border-radius: 0.3rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.3s;
+  color: base.$garden-text;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; // Align content to start for consistency
+  gap: 0.75rem; // Adjusted gap for icon-text separation
+  animation: sway 3s ease-in-out infinite;
 
   &:hover {
-    background: rgba(0, 255, 0, 0.4);
+    background: rgba(base.$garden-primary, 0.4);
+    transform: scale(1.05);
   }
 }
 
+@keyframes sway {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
 .harvest-button {
+  @include base.button-style(base.$garden-primary);
   margin: 1rem 0;
   padding: 0.5rem 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
+  transition: transform 0.3s;
 
-  &:hover {
-    background: #45a049;
+  &:active {
+    transform: scale(1.1);
+    animation: pulse 0.5s;
   }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }

@@ -1,3 +1,5 @@
+@use '../../garden-swarm-base' as base;
+
 .upgrades-section {
   flex: 1;
 }
@@ -10,20 +12,17 @@
 
 .upgrade-item {
   padding: 1rem;
-  background: rgba(255,255,255,0.1);
+  background: rgba(base.$garden-text, 0.1);
   border-radius: 0.5rem;
+  color: base.$garden-text;
 }
 
 button {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  @include base.button-style(base.$garden-accent);
 
-  &:hover {
-    background: var(--primary-hover);
+  &:disabled {
+    background: gray; // Gray tint for disabled
+    opacity: 0.7;
+    cursor: not-allowed;
   }
 }

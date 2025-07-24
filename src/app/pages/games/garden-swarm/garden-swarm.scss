@@ -1,49 +1,91 @@
-@use 'sass:color';
-
-$bg-color: #00008B;
+@use './garden-swarm-base' as base;
 
 :host {
   display: block;
   min-height: 100vh;
-  background: linear-gradient(to bottom, $bg-color, color.adjust($bg-color, $lightness: -20%));
-  color: var(--text-color);
+  background: linear-gradient(to bottom, base.$garden-bg-dark, base.$garden-bg-light);
+  color: base.$garden-text;
+  position: relative;
+  overflow: hidden;
 }
 
 .game-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Increased gap */
+  gap: 1.5rem;
   padding: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 
   .sidebar {
-    flex: 0 0 280px; /* Slightly wider */
-    background: rgba(255, 255, 255, 0.15); /* Stronger bg for visibility */
-    border-radius: 0.75rem;
-    padding: 1.5rem;
+    flex: 0 0 280px;
+    @include base.panel-style;
   }
 
   .central-grid {
     flex: 1;
-    min-height: 500px; /* Taller for content */
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 0.75rem;
-    padding: 1.5rem;
+    min-height: 500px;
+    @include base.panel-style;
   }
+}
+
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: base.$garden-accent;
+  border-radius: 50%;
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float 8s infinite ease-in-out; // Shortened duration for performance
+}
+
+.particle:nth-child(odd) {
+  background: #FF69B4; // Pink for petals
+  animation-duration: 10s; // Reduced for less computation
+}
+
+.particle:nth-child(even) {
+  animation-duration: 9s; // Reduced
+  transform: scale(0.8);
+}
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); opacity: 0.5; }
+  50% { transform: translateY(-15px) translateX(3px); opacity: 0.7; } // Simplified movement
+  100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+}
+
+.bee-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #FFD700; // Gold for bees
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: buzz 4s infinite ease-in-out; // Shortened duration
+}
+
+@keyframes buzz {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(8px, -3px); }
+  50% { transform: translate(15px, 0); }
+  75% { transform: translate(8px, 3px); }
+  100% { transform: translate(0, 0); }
 }
 
 @media (min-width: 768px) {
   .game-container {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start; /* Align tops */
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 767px) {
   .sidebar.left {
-    order: 3; /* Stack left below right on mobile */
+    order: 3;
   }
   .sidebar.right {
     order: 2;
