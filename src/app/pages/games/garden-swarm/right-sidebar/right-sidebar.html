@@ -1,0 +1,10 @@
+<div class="right-sidebar">
+  <app-upgrades></app-upgrades>
+  <app-stats></app-stats>
+
+  <div class="weather">
+    Weather: <span [style.color]="gameService.weather() === 'rainy' ? 'blue' : gameService.weather() === 'stormy' ? 'gray' : 'yellow'">{{ gameService.weather() }}</span>
+  </div>
+
+  <button (click)="prestigeConfirm()">Harvest Festival (Prestige)</button>
+</div>

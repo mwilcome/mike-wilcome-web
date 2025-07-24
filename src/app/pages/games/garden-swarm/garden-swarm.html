@@ -1,9 +1,15 @@
-<main class="game-container">
-  @if (gameService.isLoaded()) {
-    <app-stats></app-stats>
-    <app-grid></app-grid>
-    <app-upgrades></app-upgrades>
-  } @else {
-    <p>Loading your garden...</p>
-  }
-</main>
+@if (gameService.isLoaded()) {
+  <app-top-bar></app-top-bar>
+
+  <div class="game-container">
+    <app-left-sidebar class="sidebar left"></app-left-sidebar>
+
+    <app-garden-grid class="central-grid"></app-garden-grid>
+
+    <app-right-sidebar class="sidebar right"></app-right-sidebar>
+  </div>
+
+  <app-bottom-bar></app-bottom-bar>
+} @else {
+  Loading your garden...
+}

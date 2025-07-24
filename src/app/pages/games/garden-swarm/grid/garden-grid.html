@@ -3,8 +3,8 @@
   <button class="harvest-button" (click)="manualHarvest()">Harvest Bloom</button>
   <div class="plant-grid">
     @for (plant of gameService.plants(); track plant.id) {
-      <div class="plant-item" (click)="harvest(plant)">
-        {{ plant.id }}: {{ plant.count }}
+      <div class="plant-item" (click)="harvest(plant)" [@plantSway]>
+        {{ plant.id }}: {{ plant.count.toString() }}
       </div>
     } @empty {
       <p>No plants yet—buy some!</p>

@@ -6,3 +6,8 @@ export interface Plant {
   production: Big;
   cost: Big;
 }
+
+export interface Seed {
+  id: string;
+  count: Big;
+}

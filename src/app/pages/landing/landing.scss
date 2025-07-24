@@ -10,7 +10,7 @@
   flex-direction: column; /* Stack for mobile chaos, but allow side-by-side on desktop */
   align-items: center;
   text-align: center;
-  padding: 6rem 2rem;
+  padding: .5rem 2rem 2rem 2rem;
   background: transparent; /* Layer over global gradient */
   color: var(--text-color);
   position: relative;
@@ -93,25 +93,29 @@
 }
 
 .about {
-  padding: 3rem 2rem;
-  max-width: 900px;
+  padding: 2rem 1rem; /* Reduced padding for a tighter look */
+  max-width: 700px; /* Narrower for focus */
   margin: 0 auto;
-  text-align: center;
-  background: rgba(0,0,139,0.3); /* Semi-transparent blue for depth */
-  border-radius: 2rem;
-  box-shadow: var(--neon-shadow);
+  text-align: left; /* Left-aligned for a more professional, resume-like feel */
+  background: rgba(0, 0, 0, 0.7); /* Darker semi-transparent black for better contrast on rainbow bg */
+  border-radius: 1rem; /* Softer corners */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Cyan neon shadow, less intense */
 
   h2 {
-    font-family: var(--retro-font);
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #00FFFF; /* Cyan pop */
-    transform: skewY(2deg);
+    font-family: var(--font-family); /* Modern font for readability */
+    font-size: 2.2rem; /* Increased for clarity */
+    margin-bottom: 1rem;
+    color: #FFFFFF; /* Bright white for contrast */
+    text-shadow: 0 0 5px #00FFFF, 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle neon outline */
+    transform: none; /* Remove skew for cleaner visuals */
   }
 
   p {
-    font-size: 1.2rem;
-    color: #FFD700; /* Yellow text for vibe */
+    font-size: 1.3rem; /* Increased for better readability */
+    color: #FFD700; /* Keep yellow but ensure contrast with dark bg */
+    margin-bottom: 0.5rem; /* Tighter spacing between lines */
+    line-height: 1.6; /* Improved readability with more line spacing */
+    text-shadow: 0 0 3px #FFFFFF, 0 0 6px rgba(0, 0, 0, 0.3); /* Light neon edge */
   }
 }
 
@@ -163,6 +167,33 @@
   }
 }
 
+.info-link {
+  padding: 2rem;
+  text-align: center; /* Centers the button horizontally */
+}
+
+.info-button {
+  display: inline-block;
+  padding: 1.5rem 3rem; /* Larger for in-your-face */
+  margin-top: 1rem; /* Space from cta-button */
+  background: linear-gradient(90deg, #FF4500, #00FFFF, #FFD700); /* Bold rainbow gradient */
+  color: #000000; /* Black text for contrast */
+  border-radius: 1.5rem; /* Slightly larger curve */
+  font-family: var(--retro-font);
+  font-size: 1.3rem;
+  font-weight: 800;
+  border: none; /* Remove dashed border */
+  box-shadow: 0 0 10px #FF1493, 0 0 20px #00FFFF, 0 0 5px #FFD700 inset; /* Neon shadow border */
+  text-decoration: none;
+  text-shadow: 0 0 10px #FF1493, 0 0 20px #00FFFF; /* Neon glow */
+  transition: transform 0.4s ease, filter 0.4s ease;
+
+  &:hover {
+    transform: scale(1.15) rotate(3deg); /* More pronounced hover */
+    filter: brightness(1.3) drop-shadow(0 0 15px #FFD700); /* Bright yellow glow */
+  }
+}
+
 footer {
   text-align: center;
   padding: 1.5rem;
@@ -171,6 +202,24 @@ footer {
   font-family: var(--retro-font);
   font-size: 1rem;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.4);
+  position: relative;
+
+  .footer-svg {
+    display: block;
+    margin-top: 1rem;
+    height: 100px; /* Adjusted for detailed design */
+    filter: drop-shadow(0 0 20px #00FFFF) drop-shadow(0 0 10px #FF1493); /* Strong neon glow */
+  }
+
+  /* Pixel animation for wow factor */
+  .pixel-animate {
+    animation: pixelPulse 2s infinite alternate;
+  }
+
+  @keyframes pixelPulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.2); }
+  }
 }
 
 @keyframes fadeIn {

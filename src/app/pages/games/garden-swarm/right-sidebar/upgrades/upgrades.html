@@ -3,15 +3,15 @@
   <div class="upgrade-list">
     @for (plant of gameService.plants(); track plant.id) {
       <div class="upgrade-item">
-        Buy {{ plant.id }} (Cost: {{ plant.cost }})
+        Buy {{ plant.id }} (Cost: {{ plant.cost.toString() }})
         @if (gameService.canAfford(plant)) {
-          <button (click)="gameService.buyPlant(plant.id)">Buy</button>
+          <button (click)="buyPlant(plant.id)">Buy</button>
         } @else {
-          <p>Can't afford</p>
+          Can't afford
         }
       </div>
     } @empty {
-      <p>No upgrades available.</p>
+      No upgrades available.
     }
   </div>
 </section>
