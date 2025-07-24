@@ -5,16 +5,18 @@
     Offline: +{{ offlineGains() }}
   </div>
 
-  <button (click)="toggleSettings()">⚙️ Settings</button>
+  <div class="settings-wrapper">
+    <button (click)="toggleSettings()">⚙️ Settings</button>
 
-  @defer (when showSettings()) {
-    <div class="settings-modal">
-      <div class="modal-content">
-        <h3>Settings</h3>
-        <label><input type="checkbox" (change)="toggleAudio($event)"> Toggle Audio</label>
-        <button (click)="exportSave()">Export Save</button>
-        <button (click)="toggleSettings()">Close</button>
+    @if (showSettings()) {
+      <div class="settings-modal" clickOutside (clickOutside)="closeSettings()">
+        <div class="modal-content">
+          <h3>Settings</h3>
+          <label><input type="checkbox" (change)="toggleAudio($event)"> Toggle Audio</label>
+          <button (click)="exportSave()">Export Save</button>
+          <button (click)="toggleSettings()">Close</button>
+        </div>
       </div>
-    </div>
-  }
+    }
+  </div>
 </div>

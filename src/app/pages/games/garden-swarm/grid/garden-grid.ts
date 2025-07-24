@@ -1,8 +1,8 @@
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { GameService } from '@core/services/game';
 import { Plant } from '@core/models/plant';
 import Big from 'big.js';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
   selector: 'app-garden-grid',
@@ -27,11 +27,11 @@ export class GardenGrid {
   constructor(public gameService: GameService) {}
 
   harvest(plant: Plant) {
-    const totalHarvest = plant.production.mul(plant.count).div(10); // 1/10th production per harvest
+    const totalHarvest = plant.production.mul(plant.count); // Full production per harvest, not 1/10th
     this.gameService.blooms.update(b => b.add(totalHarvest));
   }
 
   manualHarvest() {
-    this.gameService.blooms.update(b => b.add(new Big(1))); // Initial 1 bloom per click
+    this.gameService.blooms.update(b => b.add(new Big(1)));
   }
 }

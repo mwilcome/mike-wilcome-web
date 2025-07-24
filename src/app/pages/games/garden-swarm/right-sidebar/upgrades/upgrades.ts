@@ -14,7 +14,6 @@ export class Upgrades {
 
   buyPlant(plantId: string) {
     this.gameService.buyPlant(plantId);
-    // Add or increment seed in inventory
     this.gameService.seeds.update(seeds => {
       const existing = seeds.find(s => s.id === plantId);
       if (existing) {

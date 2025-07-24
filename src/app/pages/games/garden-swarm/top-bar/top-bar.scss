@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 2rem; /* Increased padding on left/right */
   background: rgba(0, 0, 0, 0.8);
   color: white;
   z-index: 10;
@@ -16,24 +16,65 @@
   gap: 1rem;
 }
 
+.settings-wrapper {
+  position: relative;
+  margin-right: 3rem;
+}
+
 .settings-modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
+  position: absolute;
+  top: 100%; /* Below button */
+  right: 0; /* Right-aligned to button */
+  width: 250px;
+  max-height: 300px;
   background: rgba(0, 0, 0, 0.9);
   color: white;
-  padding: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   z-index: 20;
   overflow-y: auto;
 
   .modal-content {
-    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   button, label {
-    display: block;
-    margin: 1rem 0;
+    width: 100%;
+  }
+}
+
+/* Enhanced responsive handling */
+@media (max-width: 768px) {
+  .top-bar {
+    padding: 1rem; /* Reduce padding on mobile */
+  }
+
+  .settings-wrapper {
+    margin-right: 0.5rem; /* Less margin on mobile */
+  }
+
+  .settings-modal {
+    right: -10px; /* Slight left shift */
+    width: 200px; /* Narrower on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0.5rem;
+  }
+
+  .settings-wrapper {
+    margin: 0.5rem 0 0 0; /* Stack below resources */
+  }
+
+  .settings-modal {
+    right: 0;
+    width: 180px;
   }
 }
