@@ -2,10 +2,13 @@
   <h2>Stats</h2>
   <p>Blooms: {{ gameService.blooms().toString() }}</p>
   <p>Blooms per Second: {{ gameService.bps().toString() }}</p>
-  <p class="weather-display" [class]="gameService.weather().toLowerCase()">
-    @if (gameService.weather() === 'sunny') { ☀️ }
-    @else if (gameService.weather() === 'rainy') { 🌧️ }
-    @else if (gameService.weather() === 'stormy') { ⛈️ }
-    Weather: {{ gameService.weather() }}
-  </p>
+  <div class="stats-meta">
+    <p class="weather-display" [class]="gameService.weather().toLowerCase()">
+      @if (gameService.weather() === 'sunny') { ☀️ }
+      @else if (gameService.weather() === 'rainy') { 🌧️ }
+      @else if (gameService.weather() === 'stormy') { ⛈️ }
+      Weather: {{ gameService.weather() }}
+    </p>
+    <p class="prestige">Harvest Festival (Prestige)</p>
+  </div>
 </div>

@@ -1,12 +1,12 @@
 <div class="top-bar">
   <div class="resources">
-    Blooms: {{ bloomsFormatted() }}
-    BPS: {{ bpsFormatted() }}
-    Offline: +{{ offlineGains() }}
+    <span>🌸 Blooms: {{ bloomsFormatted() }}</span>
+    <span>⏱ BPS: {{ bpsFormatted() }}</span>
+    <span>💤 Offline: +{{ offlineGains() }}</span>
   </div>
 
   <div class="settings-wrapper">
-    <button (click)="toggleSettings()">⚙️ Settings</button>
+    <button (click)="toggleSettings()">⚙️</button>
 
     @if (showSettings()) {
       <div class="settings-modal" clickOutside (clickOutside)="closeSettings()">

@@ -1,16 +1,16 @@
 @if (gameService.isLoaded()) {
+  <app-background-overlay></app-background-overlay>
   <app-top-bar></app-top-bar>
   <div class="game-container">
-    <app-left-sidebar class="sidebar left"></app-left-sidebar>
-    <app-garden-grid class="central-grid"></app-garden-grid>
-    <app-right-sidebar class="sidebar right"></app-right-sidebar>
+    <div class="game-inner">
+      <app-left-sidebar class="sidebar left"></app-left-sidebar>
+      <app-garden-grid class="central-grid"></app-garden-grid>
+      <app-right-sidebar class="sidebar right"></app-right-sidebar>
+    </div>
   </div>
   <app-bottom-bar></app-bottom-bar>
-  @for (i of [1,2,3,4,5,6,7,8,9,10]; track $index) {
-    <div class="particle" [style.left.%]="Math.random() * 100" [style.top.%]="Math.random() * 100" [style.animation-delay.s]="Math.random() * 5"></div>
-  }
-  @for (i of [1,2,3,4,5]; track $index) {
-    <div class="bee-particle" [style.left.%]="Math.random() * 100" [style.top.%]="Math.random() * 100" [style.animation-delay.s]="Math.random() * 3"></div>
+  @for (particle of particles(); track $index) {
+    <div class="particle {{particle.type}}" [style.left.%]="particle.left" [style.top.%]="particle.top" [style.animation-delay.s]="particle.delay"></div>
   }
 } @else {
   Loading your garden...

@@ -1,0 +1,69 @@
+/* -------------------------------------------------------
+   Garden-Swarm › Background Overlay  (no image assets)
+   ----------------------------------------------------- */
+@use '../garden-swarm-base' as *;  // pulls in $garden-* tokens
+@use 'sass:color';
+
+/* ---------- Root layer ---------- */
+.background-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+
+  /* Forest-dusk gradient built from your vars */
+  background:
+    radial-gradient(
+        ellipse at 30% 15%,
+        rgba($garden-bg-light, 0.35) 0%,
+        rgba(color.adjust($garden-bg-dark, $lightness: 5%), 0.65) 40%,
+        rgba($garden-bg-dark, 0.95) 100%
+    );
+
+  animation: bg-pulse 30s ease-in-out infinite alternate;
+}
+
+/* ---------- Noise & stylised leaf-vein overlays ---------- */
+.background-layer::before,
+.background-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Grainy noise (tiny inline SVG turbulence) */
+.background-layer::before {
+  background-image: url("data:image/svg+xml;utf8,\
+    <svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 100 100'>\
+      <filter id='n' x='0' y='0'><feTurbulence baseFrequency='0.9' numOctaves='3' /></filter>\
+      <rect width='100%' height='100%' filter='url(%23n)' opacity='0.07' />\
+    </svg>");
+  background-size: 120px 120px;
+}
+
+/* Soft “leaf vein” conic pattern */
+.background-layer::after {
+  mix-blend-mode: overlay;
+  opacity: 0.05;
+  background:
+    repeating-conic-gradient(
+        from 0deg,
+        transparent 0deg 10deg,
+        rgba($garden-accent, 0.35) 10deg 12deg
+    );
+  background-size: 240px 240px;
+  animation: leaf-shift 120s linear infinite;
+}
+
+/* ---------- Animations ---------- */
+@keyframes bg-pulse {
+  from { transform: scale(1)   rotate(0deg);   }
+  to   { transform: scale(1.04) rotate(0.2deg); }
+}
+
+@keyframes leaf-shift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(50%, 50%); }
+}

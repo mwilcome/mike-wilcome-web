@@ -5,18 +5,25 @@
   text-align: center;
   font-size: 1.2rem;
   color: base.$garden-text;
-}
 
-.weather-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
+  h2 {
+    margin-top: 0.25rem;
+    padding-top: 0.5rem;
+  }
 
-  &.sunny {
-    background: rgba(255, 215, 0, 0.2); // Gold for sunny
+  .stats-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .prestige {
+    font-size: 0.85rem;
+    background: rgba(base.$garden-accent, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.4rem;
   }
 
   &.rainy {

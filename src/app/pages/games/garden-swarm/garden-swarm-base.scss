@@ -2,15 +2,15 @@
 
 @use 'sass:color';
 
-// Color palette for garden theme
-$garden-primary: #4CAF50; // Green for growth
-$garden-accent: #FFC107; // Yellow for blooms/sun
-$garden-bg-dark: #1E1E2F; // Deep night soil
-$garden-bg-light: color.adjust($garden-bg-dark, $lightness: 10%);
-$garden-text: #FFFFFF;
-$garden-border: rgba(255, 255, 255, 0.2);
-$garden-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-$garden-hover: color.adjust($garden-primary, $lightness: 10%);
+// Color palette for garden theme (enhanced for greener, plant-friendly tones)
+$garden-primary: #228B22; // Forest green for growth
+$garden-accent: #90EE90; // Light green for blooms/sun highlights
+$garden-bg-dark: #052c05; // Dark green soil background
+$garden-bg-light: color.adjust($garden-bg-dark, $lightness: 15%);
+$garden-text: #F0FFF0; // Honeydew white for readability on green
+$garden-border: rgba(255, 255, 255, 0.15);
+$garden-shadow: 0 4px 12px rgba(0, 100, 0, 0.3); // Green-tinted shadow
+$garden-hover: color.adjust($garden-primary, $lightness: 15%);
 
 // Typography
 $font-main: 'Inter', sans-serif;
@@ -18,10 +18,11 @@ $font-retro: 'Press Start 2P', monospace;
 
 // Mixins for common styles
 @mixin panel-style {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(34, 139, 34, 0.1); // Semi-transparent forest green
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: $garden-shadow;
+  backdrop-filter: blur(5px); // For glassmorphism effect over background
 }
 
 @mixin button-style($bg: $garden-primary) {
@@ -42,6 +43,25 @@ $font-retro: 'Press Start 2P', monospace;
     cursor: not-allowed;
   }
 }
+
+/* ---------------------------------------------
+   Glass panel helper – add this near your other mixins
+   --------------------------------------------- */
+@mixin glass-panel(
+  $tint: rgba($garden-bg-dark, 0.35),
+  $blur: 12px,
+  $extra-lighten: 6%
+) {
+  $final: color.adjust($tint, $lightness: $extra-lighten);
+  background: $final;
+
+  backdrop-filter: blur($blur) brightness(1.0);
+  border: 1px solid rgba($garden-border, .25);
+  border-radius: 1rem;
+  box-shadow: 0 0 8px rgba($garden-border, .20);
+  padding-block: 1rem 1.25rem;
+}
+
 
 // Resets for game elements
 .game-element {

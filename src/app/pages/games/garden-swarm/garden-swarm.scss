@@ -1,96 +1,66 @@
 @use './garden-swarm-base' as base;
 
+:root {
+  --hud-height: 3.5rem;
+  --hud-gap: 1rem;
+  --footer-height: 4.25rem;
+}
+
 :host {
   display: block;
   min-height: 100vh;
-  background: linear-gradient(to bottom, base.$garden-bg-dark, base.$garden-bg-light);
   color: base.$garden-text;
   position: relative;
-  overflow: hidden;
+  /* Removed overflow: hidden to prevent potential clipping of fixed elements */
+
+  background: linear-gradient(
+      180deg,
+      rgba(base.$garden-bg-dark, 0.45),
+      rgba(base.$garden-bg-light, 0.45)
+  );
 }
 
 .game-container {
+  position: fixed;
+  top: 4.5rem;
+  bottom: 5.5rem;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding-inline: 1.75rem;
+  z-index: 100;
+
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  justify-content: center;
 
-  .sidebar {
+  /* Inner layout section with max-width constraint */
+  .game-inner {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .sidebar.left {
     flex: 0 0 280px;
-    @include base.panel-style;
+    @include base.glass-panel(rgba(base.$garden-primary, 0.28), 12px, 6%);
   }
-
+  .sidebar.right {
+    flex: 0 0 280px;
+    @include base.glass-panel(rgba(base.$garden-accent, 0.26), 12px, 2%);
+  }
   .central-grid {
-    flex: 1;
-    min-height: 500px;
-    @include base.panel-style;
-  }
-}
-
-.particle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: base.$garden-accent;
-  border-radius: 50%;
-  opacity: 0.5;
-  pointer-events: none;
-  animation: float 8s infinite ease-in-out; // Shortened duration for performance
-}
-
-.particle:nth-child(odd) {
-  background: #FF69B4; // Pink for petals
-  animation-duration: 10s; // Reduced for less computation
-}
-
-.particle:nth-child(even) {
-  animation-duration: 9s; // Reduced
-  transform: scale(0.8);
-}
-
-@keyframes float {
-  0% { transform: translateY(0) translateX(0); opacity: 0.5; }
-  50% { transform: translateY(-15px) translateX(3px); opacity: 0.7; } // Simplified movement
-  100% { transform: translateY(0) translateX(0); opacity: 0.5; }
-}
-
-.bee-particle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #FFD700; // Gold for bees
-  border-radius: 50%;
-  opacity: 0.7;
-  pointer-events: none;
-  animation: buzz 4s infinite ease-in-out; // Shortened duration
-}
-
-@keyframes buzz {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(8px, -3px); }
-  50% { transform: translate(15px, 0); }
-  75% { transform: translate(8px, 3px); }
-  100% { transform: translate(0, 0); }
-}
-
-@media (min-width: 768px) {
-  .game-container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex: 1 1 auto;
+    min-height: 520px;
+    @include base.glass-panel(rgba(base.$garden-bg-dark, 0.34), 14px, 8%);
   }
 }
 
 @media (max-width: 767px) {
-  .sidebar.left {
-    order: 3;
+  .game-inner {
+    flex-direction: column;
   }
-  .sidebar.right {
-    order: 2;
-  }
-  .central-grid {
-    order: 1;
-  }
+  .sidebar.left { order: 3; }
+  .sidebar.right { order: 2; }
+  .central-grid { order: 1; }
 }
