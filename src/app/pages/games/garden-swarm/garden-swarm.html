@@ -9,9 +9,6 @@
     </div>
   </div>
   <app-bottom-bar></app-bottom-bar>
-  @for (particle of particles(); track $index) {
-    <div class="particle {{particle.type}}" [style.left.%]="particle.left" [style.top.%]="particle.top" [style.animation-delay.s]="particle.delay"></div>
-  }
 } @else {
   Loading your garden...
 }

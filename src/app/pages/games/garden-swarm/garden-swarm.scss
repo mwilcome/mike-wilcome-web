@@ -43,16 +43,16 @@
 
   .sidebar.left {
     flex: 0 0 280px;
-    @include base.glass-panel(rgba(base.$garden-primary, 0.28), 12px, 6%);
+    @include base.glass-panel(rgba(base.$garden-primary, 0.28), 12px, 6%, 1.2rem); // Updated radius
   }
   .sidebar.right {
     flex: 0 0 280px;
-    @include base.glass-panel(rgba(base.$garden-accent, 0.26), 12px, 2%);
+    @include base.glass-panel(rgba(base.$garden-accent, 0.26), 12px, 2%, 1.2rem); // Updated radius
   }
   .central-grid {
     flex: 1 1 auto;
     min-height: 520px;
-    @include base.glass-panel(rgba(base.$garden-bg-dark, 0.34), 14px, 8%);
+    @include base.glass-panel(rgba(base.$garden-bg-dark, 0.34), 14px, 8%, 1.4rem); // Updated radius
   }
 }
 

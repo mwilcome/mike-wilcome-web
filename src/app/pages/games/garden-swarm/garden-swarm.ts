@@ -17,56 +17,14 @@ import {BackgroundOverlay} from './background-overlay/background-overlay';
 })
 export class GardenSwarm {
   constructor(public gameService: GameService) {
+    // Removed generateBaseParticles() to avoid particle-related issues
     effect(() => {
       const weather = this.gameService.weather();
-      this.generateParticles(weather);
+      if (weather) { // Keep the check in case weather logic is used elsewhere
+        // Removed generateParticles() call to avoid crashes
+      }
     });
   }
 
-  particles = signal<any[]>([]);
-
-  generateParticles(weather: string) {
-    const newParticles: any[] = [];
-    switch (weather) {
-      case 'sunny':
-        for (let i = 0; i < 5; i++) {
-          newParticles.push({
-            type: 'petal',
-            left: Math.random() * 100,
-            top: Math.random() * 100,
-            delay: Math.random() * 5
-          });
-        }
-        for (let i = 0; i < 3; i++) {
-          newParticles.push({
-            type: 'bee',
-            left: Math.random() * 100,
-            top: Math.random() * 100,
-            delay: Math.random() * 3
-          });
-        }
-        break;
-      case 'rainy':
-        for (let i = 0; i < 8; i++) {
-          newParticles.push({
-            type: 'rain',
-            left: Math.random() * 100,
-            top: -10,
-            delay: Math.random() * 2
-          });
-        }
-        break;
-      case 'stormy':
-        for (let i = 0; i < 5; i++) {
-          newParticles.push({
-            type: 'cloud',
-            left: Math.random() * 100,
-            top: Math.random() * 20,
-            delay: Math.random() * 5
-          });
-        }
-        break;
-    }
-    this.particles.set(newParticles);
-  }
+  particles = signal<any[]>([]); // Kept as a signal but unused for now
 }

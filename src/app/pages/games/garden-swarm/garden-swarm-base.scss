@@ -4,30 +4,48 @@
 
 // Color palette for garden theme (enhanced for greener, plant-friendly tones)
 $garden-primary: #228B22; // Forest green for growth
-$garden-accent: #90EE90; // Light green for blooms/sun highlights
+$garden-accent: #90EE90; // Light green for blooms/sun highlights (to be softened)
 $garden-bg-dark: #052c05; // Dark green soil background
 $garden-bg-light: color.adjust($garden-bg-dark, $lightness: 15%);
 $garden-text: #F0FFF0; // Honeydew white for readability on green
 $garden-border: rgba(255, 255, 255, 0.15);
 $garden-shadow: 0 4px 12px rgba(0, 100, 0, 0.3); // Green-tinted shadow
 $garden-hover: color.adjust($garden-primary, $lightness: 15%);
+$garden-accent-light: #A8DADC; // Mint for highlights
+$garden-accent-dark: #6B4226; // Earthy brown for borders/shadows
+
+// Define CSS variables for theming
+:root {
+  --garden-primary: #{$garden-primary};
+  --garden-accent: #{$garden-accent};
+  --garden-bg-dark: #{$garden-bg-dark};
+  --garden-bg-light: #{$garden-bg-light};
+  --garden-text: #{$garden-text};
+  --garden-border: #{$garden-border};
+  --garden-shadow: #{$garden-shadow};
+  --garden-hover: #{$garden-hover};
+  --garden-accent-light: #{$garden-accent-light};
+  --garden-accent-dark: #{$garden-accent-dark};
+}
 
 // Typography
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 $font-main: 'Inter', sans-serif;
 $font-retro: 'Press Start 2P', monospace;
+$font-whimsical: 'Playfair Display', serif;
 
 // Mixins for common styles
 @mixin panel-style {
-  background: rgba(34, 139, 34, 0.1); // Semi-transparent forest green
+  background: rgba(var(--garden-primary), 0.1); // Updated to use CSS variable
   border-radius: 0.75rem;
   padding: 1.5rem;
-  box-shadow: $garden-shadow;
+  box-shadow: var(--garden-shadow);
   backdrop-filter: blur(5px); // For glassmorphism effect over background
 }
 
-@mixin button-style($bg: $garden-primary) {
+@mixin button-style($bg: var(--garden-primary)) {
   background: $bg;
-  color: $garden-text;
+  color: var(--garden-text);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
@@ -48,17 +66,18 @@ $font-retro: 'Press Start 2P', monospace;
    Glass panel helper – add this near your other mixins
    --------------------------------------------- */
 @mixin glass-panel(
-  $tint: rgba($garden-bg-dark, 0.35),
+  $tint: rgba(var(--garden-bg-dark), 0.35),
   $blur: 12px,
-  $extra-lighten: 6%
+  $extra-lighten: 6%,
+  $radius: 1.2rem
 ) {
   $final: color.adjust($tint, $lightness: $extra-lighten);
   background: $final;
 
   backdrop-filter: blur($blur) brightness(1.0);
-  border: 1px solid rgba($garden-border, .25);
-  border-radius: 1rem;
-  box-shadow: 0 0 8px rgba($garden-border, .20);
+  border: 1px solid rgba(var(--garden-border), .25);
+  border-radius: $radius;
+  box-shadow: 0 0 8px rgba(var(--garden-border), .20), inset 0 0 10px rgba(255,255,255,0.1); // Added inner glow
   padding-block: 1rem 1.25rem;
 }
 
@@ -66,5 +85,12 @@ $font-retro: 'Press Start 2P', monospace;
 // Resets for game elements
 .game-element {
   font-family: $font-main;
-  color: $garden-text;
+  color: var(--garden-text);
+}
+
+h1, h2, h3 {
+  font-family: $font-whimsical;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  font-size: 1.5rem; // Ensure readability
+  line-height: 1.2;
 }
