@@ -1,17 +1,26 @@
-<section class="upgrades-section">
-  <h2>Upgrades</h2>
-  <div class="upgrade-list">
-    @for (plant of gameService.plants(); track plant.id) {
-      <div class="upgrade-item">
-        Buy {{ plant.id }} (Cost: {{ plant.cost.toString() }})
-        @if (gameService.canAfford(plant)) {
-          <button (click)="buyPlant(plant.id)">Buy</button>
-        } @else {
-          Can't afford
+<h2>Upgrades</h2>
+
+<div class="upgrade-list">
+  @for (plant of gameService.plants(); track plant.id) {
+    <div class="upgrade-item">
+      <div class="plant-icon">
+        @switch (plant.id) {
+          @case ('seed') { 🌱 }
+          @case ('flower') { 🌸 }
+          @case ('tree') { 🌳 }
+          @default { ❓ }
         }
       </div>
-    } @empty {
-      No upgrades available.
-    }
-  </div>
-</section>
+      <div class="plant-info">
+        <span class="plant-name">Buy {{ plant.id | titlecase }} (Cost: {{ plant.cost.toString() }})</span>
+      </div>
+      @if (gameService.canAfford(plant)) {
+        <button (click)="buyPlant(plant.id)">Buy</button>
+      } @else {
+        <button disabled>Can't afford</button>
+      }
+    </div>
+  } @empty {
+    <div class="empty-state">No upgrades available.</div>
+  }
+</div>

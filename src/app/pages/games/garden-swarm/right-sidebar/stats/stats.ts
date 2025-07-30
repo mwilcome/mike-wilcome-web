@@ -10,4 +10,10 @@ import { GameService } from '@core/services/game';
 })
 export class Stats {
   constructor(public gameService: GameService) {}
+
+  prestigeConfirm() {
+    if (confirm('Reset garden for essence?')) {
+      this.gameService.prestige();
+    }
+  }
 }

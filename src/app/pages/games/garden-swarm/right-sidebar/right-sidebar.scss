@@ -1,11 +1,8 @@
 @use '../garden-swarm-base' as base;
 
 .right-sidebar {
-  @include base.panel-style;
-
-  h2 {
-    margin-top: 0.25rem;
-    padding-top: 0.5rem;
-    font-size: 1.4rem;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @include base.glass-panel(rgba(base.$garden-bg-dark, 0.34), 14px, 8%, 1.4rem);
 }

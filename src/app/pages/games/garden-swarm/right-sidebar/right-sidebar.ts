@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { GameService } from '@core/services/game';
-import { Upgrades } from './upgrades/upgrades'; // Import existing
-import { Stats } from './stats/stats'; // Import existing
+import { Upgrades } from './upgrades/upgrades';
+import { Stats } from './stats/stats';
 
 @Component({
   selector: 'app-right-sidebar',
@@ -13,10 +13,4 @@ import { Stats } from './stats/stats'; // Import existing
 })
 export class RightSidebar {
   constructor(public gameService: GameService) {}
-
-  prestigeConfirm() {
-    if (confirm('Reset garden for essence?')) {
-      this.gameService.prestige();
-    }
-  }
 }

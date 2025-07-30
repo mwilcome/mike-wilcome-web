@@ -15,6 +15,25 @@
   background: rgba(base.$garden-text, 0.1);
   border-radius: 0.5rem;
   color: base.$garden-text;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .plant-icon {
+    font-size: 2rem;
+  }
+
+  .plant-info {
+    flex: 1;
+    .plant-name {
+      font-weight: bold;
+    }
+  }
 }
 
 button {
@@ -25,4 +44,10 @@ button {
     opacity: 0.7;
     cursor: not-allowed;
   }
+}
+
+.empty-state {
+  text-align: center;
+  color: gray;
+  padding: 1rem;
 }

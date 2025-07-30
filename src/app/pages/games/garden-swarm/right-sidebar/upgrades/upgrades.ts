@@ -1,12 +1,16 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { GameService } from '@core/services/game';
 import Big from 'big.js';
+import {TitleCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-upgrades',
   standalone: true,
   templateUrl: './upgrades.html',
   styleUrl: './upgrades.scss',
+  imports: [
+    TitleCasePipe
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Upgrades {
