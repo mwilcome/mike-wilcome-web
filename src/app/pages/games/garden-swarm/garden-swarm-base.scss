@@ -66,7 +66,7 @@ $font-whimsical: 'Playfair Display', serif;
    Glass panel helper – add this near your other mixins
    --------------------------------------------- */
 @mixin glass-panel(
-  $tint: rgba(var(--garden-bg-dark), 0.35),
+  $tint: var(--garden-bg-dark),
   $blur: 12px,
   $extra-lighten: 6%,
   $radius: 1.2rem
