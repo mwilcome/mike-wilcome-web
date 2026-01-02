@@ -14,32 +14,16 @@
     </header>
 
     <div class="theme-buttons" role="group" aria-label="Theme selection">
-      <button
-        type="button"
-        class="theme-btn"
-        [class.active]="theme() === 'arcade'"
-        (click)="setTheme('arcade')"
-      >
-        Arcade
-      </button>
-
-      <button
-        type="button"
-        class="theme-btn"
-        [class.active]="theme() === 'ink'"
-        (click)="setTheme('ink')"
-      >
-        Ink
-      </button>
-
-      <button
-        type="button"
-        class="theme-btn"
-        [class.active]="theme() === 'terminal'"
-        (click)="setTheme('terminal')"
-      >
-        Terminal
-      </button>
+      @for (t of themes; track t) {
+        <button
+          type="button"
+          class="theme-btn"
+          [class.active]="theme() === t"
+          (click)="setTheme(t)"
+        >
+          {{ t }}
+        </button>
+      }
     </div>
 
     <div class="readout">

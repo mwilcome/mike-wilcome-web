@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-landing',
@@ -9,4 +10,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './landing.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Landing {}
+export class Landing {
+  private readonly themeService = inject(ThemeService);
+
+  readonly theme = this.themeService.theme;
+
+  cycleTheme(): void {
+    this.themeService.cycleTheme();
+  }
+}

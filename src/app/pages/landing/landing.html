@@ -1,11 +1,25 @@
 <header class="hero">
   <div class="hero-content">
-    <p class="kicker">Mike Wilcome • Dev Playground</p>
+    <div class="kicker-row">
+      <p class="kicker">Mike Wilcome • Dev Playground</p>
+
+      <button
+        type="button"
+        class="theme-chip"
+        (click)="cycleTheme()"
+        aria-label="Cycle theme"
+        title="Cycle theme"
+      >
+        <span class="label">Theme</span>
+        <strong class="value">{{ theme() }}</strong>
+        <span class="icon" aria-hidden="true">↻</span>
+      </button>
+    </div>
 
     <h1>Angular experiments, cleanly contained.</h1>
 
     <p class="subtitle">
-      A small personal site where I test Angular 20+ ideas for fun.
+      A small personal site written in Angular 20+
     </p>
 
     <div class="cta-row" role="group" aria-label="Primary navigation">

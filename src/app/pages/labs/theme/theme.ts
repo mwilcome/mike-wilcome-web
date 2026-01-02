@@ -1,23 +1,6 @@
-import { ChangeDetectionStrategy, Component, effect, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-type ThemeName = 'arcade' | 'ink' | 'terminal';
-
-const STORAGE_KEY = 'mw.theme';
-
-function isThemeName(value: string | null): value is ThemeName {
-  return value === 'arcade' || value === 'ink' || value === 'terminal';
-}
-
-function applyTheme(theme: ThemeName): void {
-  document.documentElement.dataset['theme'] = theme;
-}
-
-function readInitialTheme(): ThemeName {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (isThemeName(stored)) return stored;
-  return 'arcade';
-}
+import { ThemeName, ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-theme-lab',
@@ -28,17 +11,12 @@ function readInitialTheme(): ThemeName {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeLab {
-  readonly theme = signal<ThemeName>(readInitialTheme());
+  private readonly themeService = inject(ThemeService);
 
-  constructor() {
-    effect(() => {
-      const t = this.theme();
-      applyTheme(t);
-      localStorage.setItem(STORAGE_KEY, t);
-    });
-  }
+  readonly theme = this.themeService.theme;
+  readonly themes = this.themeService.themes;
 
   setTheme(theme: ThemeName): void {
-    this.theme.set(theme);
+    this.themeService.setTheme(theme);
   }
 }

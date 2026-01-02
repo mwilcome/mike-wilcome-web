@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap');
 
+/*
+TOKEN SEMANTICS
+--------------------------------------------------
+--text-color      : primary readable text
+--text-muted      : secondary/supporting text
+
+--primary-color   : strong identity / hero emphasis
+--primary-hover   : secondary identity / motion
+
+--link-color      : interactive affordances
+--accent-color    : highlights, focus rings, chips
+
+Rules:
+- Headlines may use primary/hover gradients
+- Body text should never use primary directly
+- Buttons may mix primary + hover
+*/
+
 :root {
   /* =========================================================
      Typography (stacks live here)
@@ -131,7 +149,6 @@ html[data-theme='terminal'] {
   --header-border: rgba(50, 255, 126, 0.25);
   --title-glow: 0 0 18px rgba(50, 255, 126, 0.18);
 
-  /* “scanline-ish” + phosphor haze using existing hooks */
   --trash-gradient: radial-gradient(circle at 30% 20%, rgba(50, 255, 126, 0.10), transparent 55%),
   radial-gradient(circle at 70% 60%, rgba(0, 229, 255, 0.08), transparent 55%),
   linear-gradient(180deg, #050807, #020403);
@@ -149,6 +166,55 @@ html[data-theme='terminal'] {
       rgba(50, 255, 126, 0.10) 0%,
       rgba(0, 229, 255, 0.06) 30%,
       transparent 62%
+  );
+}
+
+/* =========================================================
+   Theme: LAVA (molten, obsidian)
+   ========================================================= */
+html[data-theme='lava'] {
+  --bg-color: #140405;
+  --text-color: #fff3ea;
+  --text-muted: rgba(255, 243, 234, 0.74);
+
+  --primary-color: #ff3b1a; /* molten */
+  --primary-hover: #ffb020; /* flare */
+  --accent-color: #ff6a00; /* ember */
+  --link-color: #ffb020;
+
+  --surface-1: rgba(0, 0, 0, 0.58);
+  --surface-2: rgba(0, 0, 0, 0.72);
+  --surface-3: rgba(255, 59, 26, 0.08);
+
+  --border-1: rgba(255, 243, 234, 0.14);
+  --border-2: rgba(255, 176, 32, 0.28);
+
+  --shadow-1: 0 18px 55px rgba(0, 0, 0, 0.62);
+  --shadow-2: 0 0 22px rgba(255, 59, 26, 0.14);
+
+  --header-bg: rgba(0, 0, 0, 0.52);
+  --header-border: rgba(255, 176, 32, 0.22);
+  --title-glow: 0 0 18px rgba(255, 59, 26, 0.18), 0 0 28px rgba(255, 176, 32, 0.10);
+
+  --trash-gradient: radial-gradient(circle at 18% 15%, rgba(255, 59, 26, 0.18), transparent 55%),
+  radial-gradient(circle at 82% 35%, rgba(255, 176, 32, 0.14), transparent 55%),
+  radial-gradient(circle at 55% 92%, rgba(255, 106, 0, 0.10), transparent 60%),
+  linear-gradient(180deg, #140405, #070102);
+
+  --stippled-bg: repeating-radial-gradient(
+      circle,
+      rgba(255, 243, 234, 0.16) 0px,
+      rgba(255, 243, 234, 0.16) 1px,
+      transparent 1px,
+      transparent 7px
+  );
+
+  --collage-pattern: radial-gradient(
+      circle at 55% 45%,
+      rgba(255, 59, 26, 0.14) 0%,
+      rgba(255, 176, 32, 0.10) 28%,
+      rgba(255, 106, 0, 0.08) 45%,
+      transparent 64%
   );
 }
 

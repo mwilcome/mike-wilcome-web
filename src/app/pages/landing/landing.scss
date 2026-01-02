@@ -20,6 +20,10 @@
   z-index: 0;
 }
 
+:host-context(html[data-theme='lava'])::after {
+  opacity: 0.16;
+}
+
 /* Theme-driven texture (even more subtle) */
 :host::before {
   content: '';
@@ -53,12 +57,64 @@
   filter: drop-shadow(var(--shadow-2));
 }
 
-.kicker {
+.kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
   margin: 0 0 0.75rem 0;
+}
+
+.kicker {
+  margin: 0;
   font-family: var(--retro-font);
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   opacity: 0.9;
+}
+
+.theme-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-1);
+  background: var(--surface-3);
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: var(--font-family);
+  line-height: 1;
+  transition: transform 0.15s ease, filter 0.15s ease, border-color 0.15s ease;
+
+  .label {
+    font-family: var(--retro-font);
+    font-size: 0.7rem;
+    opacity: 0.85;
+  }
+
+  .value {
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: var(--link-color);
+  }
+
+  .icon {
+    font-family: var(--retro-font);
+    font-size: 0.75rem;
+    opacity: 0.75;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(var(--shadow-1));
+    border-color: var(--border-2);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+  }
 }
 
 h1 {
@@ -67,6 +123,17 @@ h1 {
   font-weight: 800;
   font-size: clamp(2rem, 3.2vw, 3rem);
   line-height: 1.1;
+  color: var(--text-color); /* fallback */
+}
+
+/* Theme-colored headline without theme-specific hacks (with safe fallback) */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  h1 {
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 .subtitle {
@@ -119,6 +186,10 @@ h1 {
   color: #001a0b;
 }
 
+:host-context(html[data-theme='lava']) .btn.primary {
+  color: #140405;
+}
+
 .btn.secondary {
   background: var(--surface-3);
   color: var(--text-color);
@@ -155,6 +226,16 @@ h1 {
     font-size: 1.6rem;
     font-weight: 800;
     font-family: var(--font-family);
+    color: var(--text-color); /* fallback */
+  }
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .cards-header h2 {
+    background: linear-gradient(90deg, var(--text-color), var(--link-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 }
 
