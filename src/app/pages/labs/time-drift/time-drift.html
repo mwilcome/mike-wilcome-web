@@ -1,0 +1,90 @@
+<section class="labs-header">
+  <div class="top-row">
+    <h1>Time Drift</h1>
+    <a class="back" routerLink="/labs">← Back to Labs</a>
+  </div>
+
+  <p class="sub">
+    This lab is about a quietly brutal truth: time keeps moving even when your app isn’t running.
+  </p>
+</section>
+
+<section class="wrap" aria-label="Time drift lab">
+  <article class="panel">
+    <header class="panel-header">
+      <h2>What it does</h2>
+      <p>
+        We store a “checkpoint” timestamp (in localStorage), then compare it to a live clock. The difference is your
+        <strong>drift</strong> — the window you’d use for offline progression, staleness checks, and delayed work.
+      </p>
+    </header>
+
+    <div class="grid">
+      <div class="stat">
+        <div class="label">Now</div>
+        <div class="value">{{ nowLabel() }}</div>
+      </div>
+
+      <div class="stat">
+        <div class="label">Checkpoint</div>
+        <div class="value">{{ checkpointLabel() }}</div>
+      </div>
+
+      <div class="stat drift">
+        <div class="label">Drift</div>
+        <div class="value">{{ driftLabel() }}</div>
+        <div class="hint">{{ explanation() }}</div>
+      </div>
+    </div>
+
+    <div class="controls" role="group" aria-label="Time drift controls">
+      <button type="button" class="btn primary" (click)="saveCheckpoint()">
+        Save checkpoint
+      </button>
+
+      <div class="sim">
+        <span class="sim-label">Simulate offline:</span>
+
+        <input
+          class="input"
+          type="number"
+          min="1"
+          max="999"
+          [value]="amount()"
+          (input)="setAmountFromInput($any($event.target).value)"
+          aria-label="Offline amount"
+        />
+
+        <select
+          class="select"
+          [value]="unit()"
+          (change)="setUnitFromSelect($any($event.target).value)"
+          aria-label="Offline unit"
+        >
+          <option value="minutes">minutes</option>
+          <option value="hours">hours</option>
+          <option value="days">days</option>
+        </select>
+
+        <button type="button" class="btn secondary" (click)="simulateOffline()">
+          Apply
+        </button>
+      </div>
+
+      <button type="button" class="btn ghost" (click)="resetStorage()">
+        Reset (clear storage)
+      </button>
+    </div>
+
+    <div class="notes">
+      <h3>What it’s meant to teach</h3>
+      <ul>
+        <li><strong>Derived state:</strong> drift is computed, not stored.</li>
+        <li><strong>Persistence:</strong> checkpoint survives reloads because it’s saved.</li>
+        <li>
+          <strong>Offline catch-up:</strong> games and apps often turn drift into “progress while away”.
+        </li>
+      </ul>
+    </div>
+  </article>
+</section>
