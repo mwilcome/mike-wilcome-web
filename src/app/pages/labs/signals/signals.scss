@@ -8,21 +8,22 @@
 .labs-header {
   text-align: center;
   padding: 2.5rem 1.5rem 1.5rem;
-  background: rgba(0, 0, 139, 0.75);
-  border-bottom: 3px solid #ffd700;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
 
   h1 {
-    font-family: var(--retro-font), monospace;
+    font-family: var(--retro-font);
     font-size: 2.2rem;
     margin: 0;
-    color: #ffffff;
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #ff1493;
+    color: var(--text-color);
+    text-shadow: var(--title-glow);
   }
 
   p {
     margin: 0.5rem 0 0;
     font-size: 1.05rem;
-    color: #ffd700;
+    color: var(--text-muted);
+    font-family: var(--font-family);
   }
 }
 
@@ -36,15 +37,21 @@
 
 .back {
   text-decoration: none;
-  color: #00ffff;
+  color: var(--link-color);
   font-weight: 700;
-  padding: 0.35rem 0.6rem;
-  border-radius: 0.6rem;
-  border: 1px solid rgba(0, 255, 255, 0.35);
-  background: rgba(0, 0, 0, 0.35);
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.65rem;
+  border: 1px solid var(--border-1);
+  background: var(--surface-3);
+  font-family: var(--font-family);
 
   &:hover {
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+    box-shadow: var(--shadow-1);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
   }
 }
 
@@ -55,10 +62,10 @@
 }
 
 .lab {
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 215, 0, 0.35);
+  background: var(--surface-1);
+  border: 1px solid var(--border-1);
   border-radius: 1rem;
-  box-shadow: 0 0 18px rgba(0, 255, 255, 0.15);
+  box-shadow: var(--shadow-1);
   padding: 1.25rem;
 }
 
@@ -75,15 +82,16 @@
 
   input[type='range'] {
     width: 100%;
-    accent-color: #ffd700;
+    accent-color: var(--accent-color);
   }
 }
 
 .slider-label {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
+  font-family: var(--font-family);
 
   strong {
-    color: #ffd700;
+    color: var(--text-color);
   }
 }
 
@@ -93,18 +101,25 @@
   gap: 0.5rem;
 
   button {
-    border: 1px solid rgba(255, 215, 0, 0.6);
-    background: rgba(0, 0, 0, 0.65);
-    color: #ffffff;
-    border-radius: 0.65rem;
+    border: 1px solid var(--border-1);
+    background: var(--surface-2);
+    color: var(--text-color);
+    border-radius: 0.75rem;
     padding: 0.55rem 0.85rem;
-    font-weight: 600;
+    font-weight: 800;
     cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    font-family: var(--font-family);
 
     &:hover {
       transform: translateY(-1px);
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.35);
+      box-shadow: var(--shadow-1);
+      border-color: var(--border-2);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--accent-color);
+      outline-offset: 3px;
     }
   }
 }
@@ -117,14 +132,15 @@
 }
 
 .pill {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-1);
+  background: var(--surface-3);
   border-radius: 999px;
   padding: 0.5rem 0.8rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
+  font-family: var(--font-family);
 
   strong {
-    color: #00ffff;
+    color: var(--link-color);
   }
 }
 
@@ -132,7 +148,9 @@
   h3 {
     margin: 0 0 0.5rem;
     font-size: 1.05rem;
-    color: #ffffff;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-weight: 800;
   }
 
   ul {
@@ -150,24 +168,26 @@
     align-items: baseline;
     padding: 0.55rem 0.75rem;
     border-radius: 0.75rem;
-    background: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--surface-3);
+    border: 1px solid var(--border-1);
+    color: var(--text-muted);
   }
 }
 
 .time {
-  color: rgba(255, 215, 0, 0.9);
-  font-weight: 700;
+  color: var(--text-color);
+  font-weight: 900;
 }
 
 .mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--mono-font);
+  color: var(--text-muted);
 }
 
 .muted {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--text-muted);
   margin: 0.25rem 0 0;
+  font-family: var(--font-family);
 }
 
 @media (min-width: 900px) {

@@ -23,6 +23,12 @@ export class Labs {
       title: 'Signals Playground',
       description: 'Signals + computed + effect, with no RxJS and no DOM weirdness.',
       tag: 'Reactive core'
+    },
+    {
+      path: 'theme',
+      title: 'Theme Switcher',
+      description: 'Flip global CSS tokens with data-theme + localStorage persistence.',
+      tag: 'Design system'
     }
   ];
 }

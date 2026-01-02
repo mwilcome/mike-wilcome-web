@@ -1,0 +1,57 @@
+<section class="labs-header">
+  <div class="top-row">
+    <h1>Theme Switcher</h1>
+    <a class="back" routerLink="/labs">← Back to Labs</a>
+  </div>
+  <p>Flip global CSS tokens by setting <code>data-theme</code> on the document.</p>
+</section>
+
+<section class="labs" aria-label="Theme lab">
+  <article class="lab">
+    <header class="lab-header">
+      <h2>Choose a theme</h2>
+      <p>This updates global CSS variables (and saves your choice in localStorage).</p>
+    </header>
+
+    <div class="theme-buttons" role="group" aria-label="Theme selection">
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="theme() === 'arcade'"
+        (click)="setTheme('arcade')"
+      >
+        Arcade
+      </button>
+
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="theme() === 'ink'"
+        (click)="setTheme('ink')"
+      >
+        Ink
+      </button>
+
+      <button
+        type="button"
+        class="theme-btn"
+        [class.active]="theme() === 'terminal'"
+        (click)="setTheme('terminal')"
+      >
+        Terminal
+      </button>
+    </div>
+
+    <div class="readout">
+      <div class="pill">Current: <strong>{{ theme() }}</strong></div>
+      <div class="pill">bg: <strong class="swatch bg"></strong></div>
+      <div class="pill">primary: <strong class="swatch primary"></strong></div>
+      <div class="pill">accent: <strong class="swatch accent"></strong></div>
+    </div>
+
+    <p class="note">
+      Implementation detail: this lab writes to <code>&lt;html data-theme="..."&gt;</code>,
+      so any token overrides in <code>[data-theme="..."]</code> kick in globally.
+    </p>
+  </article>
+</section>

@@ -1,238 +1,289 @@
 :host {
   display: block;
   min-height: 100vh;
-  background: var(--trash-gradient); /* Full rainbow chaos as base */
+  background: var(--bg-color);
+  color: var(--text-color);
   position: relative;
+  overflow: hidden;
+}
+
+/* Theme-driven aura (subtle, but visible) */
+:host::after {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  background: var(--trash-gradient);
+  opacity: 0.12;
+  filter: blur(70px);
+  transform: rotate(10deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Theme-driven texture (even more subtle) */
+:host::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--collage-pattern), var(--stippled-bg);
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero,
+.cards,
+.footer {
+  position: relative;
+  z-index: 1;
 }
 
 .hero {
-  display: flex;
-  flex-direction: column; /* Stack for mobile chaos, but allow side-by-side on desktop */
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
   align-items: center;
-  text-align: center;
-  padding: .5rem 2rem 2rem 2rem;
-  background: transparent; /* Layer over global gradient */
+  padding: clamp(1.5rem, 3vw, 3rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border-1);
+}
+
+.hero-content {
+  filter: drop-shadow(var(--shadow-2));
+}
+
+.kicker {
+  margin: 0 0 0.75rem 0;
+  font-family: var(--retro-font);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+h1 {
+  margin: 0 0 1rem 0;
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.9rem;
+  font-weight: 900;
+  text-decoration: none;
+  border: 1px solid var(--border-1);
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  font-family: var(--font-family);
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(var(--shadow-2));
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+  }
+}
+
+.btn.primary {
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+  color: #0b1020;
+  border-color: var(--border-2);
+}
+
+:host-context(html[data-theme='ink']) .btn.primary {
+  color: #ffffff;
+}
+
+:host-context(html[data-theme='terminal']) .btn.primary {
+  color: #001a0b;
+}
+
+.btn.secondary {
+  background: var(--surface-3);
   color: var(--text-color);
-  position: relative;
-  overflow: hidden; /* Contain chaotic pseudo-elements */
+}
 
-  &::before { /* Add layered abstract shapes for trash-polka collage */
-    content: '';
-    position: absolute;
-    top: -20%;
-    left: -10%;
-    width: 120%;
-    height: 140%;
-    background: var(--collage-pattern);
-    transform: rotate(-5deg); /* Slight tilt for chaos */
-    opacity: 0.4;
-    pointer-events: none;
+.hero-image {
+  width: min(320px, 100%);
+  justify-self: center;
+  border-radius: 1.2rem;
+  border: 1px solid var(--border-1);
+  box-shadow: var(--shadow-1);
+  transform: rotate(1deg);
+}
+
+/* ----------------------------------------------------------------
+   Featured labs section (desktop layout fix)
+   ---------------------------------------------------------------- */
+
+.cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.cards-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-family: var(--font-family);
+  }
+}
+
+.cards-link {
+  font-family: var(--retro-font);
+  font-size: 0.75rem;
+  color: var(--link-color);
+  opacity: 0.95;
+
+  &:hover {
+    color: var(--primary-hover);
+    filter: drop-shadow(var(--shadow-2));
   }
 
-  &::after { /* Dotted stipple for added texture */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--stippled-bg);
-    opacity: 0.3;
-    pointer-events: none;
+  &:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.card {
+  display: block;
+  padding: 1.25rem 1.25rem 1.1rem;
+  border-radius: 1rem;
+  background: var(--surface-1);
+  border: 1px solid var(--border-1);
+  box-shadow: var(--shadow-1);
+  transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-2);
+    filter: drop-shadow(var(--shadow-2));
   }
 
-  .hero-content {
-    max-width: 80%;
-    z-index: 1;
-    filter: drop-shadow(var(--neon-shadow));
+  &:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
   }
 
-  h1 {
-    font-family: var(--retro-font);
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: fadeIn 1s ease-in;
-    text-shadow: 4px 4px 8px rgba(0,0,0,0.5); /* Deep shadow for pop */
-    transform: skewX(-5deg); /* Slight skew for crazy vibe */
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--text-color);
   }
 
   p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0 0 0.75rem 0;
+    color: var(--text-muted);
+    max-width: 65ch;
   }
 
-  .cta-button {
-    display: inline-block;
-    padding: 1.2rem 2.5rem;
-    background: linear-gradient(45deg, #FF1493, #00FFFF); /* Colorful button */
-    color: var(--text-color);
-    border-radius: 1rem;
-    font-weight: 800;
-    border: 3px solid #FFD700;
-    transition: transform 0.3s ease, filter 0.3s ease;
+  code {
+    font-family: var(--mono-font);
+    font-size: 0.95em;
+    padding: 0.05rem 0.35rem;
+    border-radius: 0.35rem;
+    background: var(--surface-3);
+    border: 1px solid var(--border-1);
+  }
+}
 
-    &:hover {
-      transform: scale(1.1) rotate(2deg); /* Chaotic hover */
-      filter: brightness(1.2) drop-shadow(var(--neon-shadow));
-    }
+.card-cta {
+  display: inline-block;
+  font-family: var(--retro-font);
+  font-size: 0.75rem;
+  opacity: 0.95;
+  color: var(--link-color);
+}
+
+.footer {
+  max-width: 1100px;
+  margin: 1rem auto 0;
+  padding: 1.25rem 2rem 2rem;
+  opacity: 0.75;
+  text-align: center;
+  border-top: 1px solid var(--border-1);
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+}
+
+/* ----------------------------------------------------------------
+   Responsive tuning
+   ---------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: left;
   }
 
   .hero-image {
-    max-width: 25%; /* Balanced size */
-    border-radius: 20%; /* Irregular for trash-polka */
-    box-shadow: var(--neon-shadow);
-    transition: transform 0.4s ease;
-    margin-top: 2rem;
-    transform: rotate(3deg); /* Slight chaos */
-
-    &:hover {
-      transform: rotate(-3deg) scale(1.1);
-    }
+    justify-self: start;
+    transform: none;
+    width: min(420px, 100%);
   }
 }
 
-.about {
-  padding: 2rem 1rem; /* Reduced padding for a tighter look */
-  max-width: 700px; /* Narrower for focus */
-  margin: 0 auto;
-  text-align: left; /* Left-aligned for a more professional, resume-like feel */
-  background: rgba(0, 0, 0, 0.7); /* Darker semi-transparent black for better contrast on rainbow bg */
-  border-radius: 1rem; /* Softer corners */
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); /* Cyan neon shadow, less intense */
-
-  h2 {
-    font-family: var(--font-family); /* Modern font for readability */
-    font-size: 2.2rem; /* Increased for clarity */
-    margin-bottom: 1rem;
-    color: #FFFFFF; /* Bright white for contrast */
-    text-shadow: 0 0 5px #00FFFF, 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle neon outline */
-    transform: none; /* Remove skew for cleaner visuals */
+/* Desktop layout: left “Featured labs” column + right cards */
+@media (min-width: 1000px) {
+  .cards {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 2rem;
+    align-items: start;
   }
 
-  p {
-    font-size: 1.3rem; /* Increased for better readability */
-    color: #FFD700; /* Keep yellow but ensure contrast with dark bg */
-    margin-bottom: 0.5rem; /* Tighter spacing between lines */
-    line-height: 1.6; /* Improved readability with more line spacing */
-    text-shadow: 0 0 3px #FFFFFF, 0 0 6px rgba(0, 0, 0, 0.3); /* Light neon edge */
-  }
-}
-
-.gallery {
-  padding: 4rem 2rem;
-  text-align: center;
-  position: relative;
-
-  &::before { /* Chaotic collage in gallery */
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: -5%;
-    width: 110%;
-    height: 120%;
-    background: var(--collage-pattern);
-    transform: rotate(5deg);
-    opacity: 0.5;
-    pointer-events: none;
+  .cards-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    position: sticky;
+    top: 1.25rem;
   }
 
-  h2 {
-    font-family: var(--retro-font);
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #FF4500; /* Orange glow */
-    text-shadow: 3px 3px 6px #00008B;
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .portrait-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem 1rem; /* Irregular spacing for chaos */
-  }
-
-  .portrait {
-    width: 220px;
-    height: auto;
-    border-radius: 1.5rem;
-    box-shadow: var(--neon-shadow);
-    transition: transform 0.4s ease, filter 0.4s ease;
-    transform: rotate(calc(var(--index, 0) * 4deg - 8deg));
-
-    &:hover {
-      transform: scale(1.15) rotate(0deg) translateY(-10px); /* Bounce up */
-      filter: brightness(1.3);
-    }
-  }
-}
-
-.info-link {
-  padding: 2rem;
-  text-align: center; /* Centers the button horizontally */
-}
-
-.info-button {
-  display: inline-block;
-  padding: 1.5rem 3rem; /* Larger for in-your-face */
-  margin-top: 1rem; /* Space from cta-button */
-  background: linear-gradient(90deg, #FF4500, #00FFFF, #FFD700); /* Bold rainbow gradient */
-  color: #000000; /* Black text for contrast */
-  border-radius: 1.5rem; /* Slightly larger curve */
-  font-family: var(--retro-font);
-  font-size: 1.3rem;
-  font-weight: 800;
-  border: none; /* Remove dashed border */
-  box-shadow: 0 0 10px #FF1493, 0 0 20px #00FFFF, 0 0 5px #FFD700 inset; /* Neon shadow border */
-  text-decoration: none;
-  text-shadow: 0 0 10px #FF1493, 0 0 20px #00FFFF; /* Neon glow */
-  transition: transform 0.4s ease, filter 0.4s ease;
-
-  &:hover {
-    transform: scale(1.15) rotate(3deg); /* More pronounced hover */
-    filter: brightness(1.3) drop-shadow(0 0 15px #FFD700); /* Bright yellow glow */
-  }
-}
-
-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: var(--trash-gradient); /* Match hero for cohesion */
-  color: var(--text-color);
-  font-family: var(--retro-font);
-  font-size: 1rem;
-  box-shadow: 0 -4px 10px rgba(0,0,0,0.4);
-  position: relative;
-
-  .footer-svg {
-    display: block;
-    margin-top: 1rem;
-    height: 100px; /* Adjusted for detailed design */
-    filter: drop-shadow(0 0 20px #00FFFF) drop-shadow(0 0 10px #FF1493); /* Strong neon glow */
-  }
-
-  /* Pixel animation for wow factor */
-  .pixel-animate {
-    animation: pixelPulse 2s infinite alternate;
-  }
-
-  @keyframes pixelPulse {
-    0% { opacity: 0.5; transform: scale(1); }
-    100% { opacity: 1; transform: scale(1.2); }
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-30px) rotate(-5deg); }
-  to { opacity: 1; transform: translateY(0) rotate(0deg); }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 3rem 1rem;
-    .hero-content { max-width: 100%; }
-    .hero-image { max-width: 40%; }
-  }
-
-  .portrait { width: 180px; }
 }

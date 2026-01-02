@@ -1,87 +1,56 @@
 <header class="hero">
   <div class="hero-content">
-    <h1>Welcome to Mike Wilcome's Personal Dev Playground</h1>
-    <p>A hub for my creative labs and projects. With Angular 20+</p>
-    <a routerLink="/labs" class="cta-button">Explore Labs</a>
-  </div>
-  <img src="assets/portraits/portrait2.JPG" alt="Artistic portrait of Mike in rainbow style" class="hero-image">
-</header>
+    <p class="kicker">Mike Wilcome • Dev Playground</p>
 
-<section class="info-link">
-  <a href="https://mikewilcome.info" target="_blank" class="info-button">Visit My Info Site</a>
-</section>
+    <h1>Angular experiments, cleanly contained.</h1>
 
-<section class="gallery" aria-label="Mike's Artistic Avatars">
-  <h2>My Artistic Avatars</h2>
-  <div class="portrait-grid">
-    <div class="portrait-grid">
-      @for (portrait of portraits(); track $index) {
-        <img [src]="portrait" alt="Artistic portrait variant {{ $index + 1 }}" class="portrait" style="--index: {{ $index }};">
-      } @empty {
-        <p>No portraits available yet.</p>
-      }
+    <p class="subtitle">
+      A small personal site where I test Angular 20+ ideas for fun.
+    </p>
+
+    <div class="cta-row" role="group" aria-label="Primary navigation">
+      <a routerLink="/labs" class="btn primary">Explore Labs</a>
+      <a
+        href="https://mikewilcome.info"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn secondary"
+      >
+        Visit Info Site
+      </a>
     </div>
   </div>
+
+  <img
+    src="assets/portraits/portrait2.JPG"
+    alt="Artistic portrait of Mike in rainbow style"
+    class="hero-image"
+    loading="lazy"
+    decoding="async"
+  />
+</header>
+
+<section class="cards" aria-label="Featured labs">
+  <div class="cards-header">
+    <h2>Featured labs</h2>
+    <a class="cards-link" routerLink="/labs">View all →</a>
+  </div>
+
+  <div class="cards-grid">
+    <a class="card" routerLink="/labs/signals">
+      <h3>Signals Playground</h3>
+      <p>Signals + computed + effect. Clean reactive state without RxJS noise.</p>
+      <span class="card-cta">Open →</span>
+    </a>
+
+    <a class="card" routerLink="/labs/theme">
+      <h3>Theme Switcher</h3>
+      <p>Flip global CSS tokens via <code>data-theme</code>, persisted in localStorage.</p>
+      <span class="card-cta">Open →</span>
+    </a>
+  </div>
 </section>
 
-<footer>
-  <p>© 2025 Mike Wilcome. All rights reserved.</p>
-  <svg class="footer-svg" width="100%" height="100" viewBox="0 0 1200 100" preserveAspectRatio="xMidYMid meet">
-    <defs>
-      <!-- Gradients for retro neon effects -->
-      <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" style="stop-color:#FF1493;stop-opacity:1" />
-        <stop offset="50%" style="stop-color:#00FFFF;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
-      </linearGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-      <!-- 3D-like shadow filter -->
-      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-        <feOffset dx="2" dy="2" result="offsetblur"/>
-        <feComponentTransfer>
-          <feFuncA type="linear" slope="0.5"/>
-        </feComponentTransfer>
-        <feMerge>
-          <feMergeNode/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-    <!-- Background with retro pixel pattern -->
-    <rect width="1200" height="100" fill="#000000" opacity="0.5" filter="url(#shadow)"/>
-    <!-- Retro arcade cabinet with 3D perspective -->
-    <g transform="skewX(-10) translate(400,20)">
-      <!-- Cabinet body with gradient and shadow -->
-      <rect x="0" y="0" width="400" height="60" fill="url(#neonGradient)" filter="url(#shadow)"/>
-      <!-- Screen with glow -->
-      <rect x="20" y="5" width="360" height="35" fill="#00FFFF" filter="url(#glow)"/>
-      <!-- Joystick with 3D effect -->
-      <g transform="translate(200,50) rotate(-5)">
-        <circle cx="0" cy="0" r="10" fill="#FF4500" filter="url(#glow)"/>
-        <rect x="-2" y="-20" width="4" height="20" fill="#FFD700" filter="url(#shadow)"/>
-      </g>
-      <!-- Buttons with neon glow -->
-      <circle cx="100" cy="50" r="8" fill="#32CD32" filter="url(#glow)"/>
-      <circle cx="140" cy="50" r="8" fill="#9370DB" filter="url(#glow)"/>
-      <circle cx="180" cy="50" r="8" fill="#FF1493" filter="url(#glow)"/>
-      <!-- Top trim with metallic look -->
-      <rect x="0" y="-5" width="400" height="5" fill="#C0C0C0" filter="url(#shadow)"/>
-      <!-- Screen text with retro font simulation -->
-      <text x="100" y="30" fill="#000000" font-family="monospace" font-size="20" font-weight="bold">HIGH SCORE: 999999</text>
-    </g>
-    <!-- Animated pixels for gamer vibe -->
-    <g>
-      <rect x="450" y="40" width="10" height="10" fill="#FFD700" class="pixel-animate"/>
-      <rect x="470" y="50" width="10" height="10" fill="#00FFFF" class="pixel-animate"/>
-      <rect x="490" y="60" width="10" height="10" fill="#FF1493" class="pixel-animate"/>
-      <!-- Add more pixels as needed -->
-    </g>
-  </svg>
+<footer class="footer">
+  <p>© 2026 Mike Wilcome</p>
 </footer>
