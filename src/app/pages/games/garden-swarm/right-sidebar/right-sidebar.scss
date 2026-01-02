@@ -1,8 +1,0 @@
-@use '../garden-swarm-base' as base;
-
-.right-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  @include base.glass-panel(rgba(base.$garden-bg-dark, 0.34), 14px, 8%, 1.4rem);
-}

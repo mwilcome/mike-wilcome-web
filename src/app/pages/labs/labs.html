@@ -1,0 +1,19 @@
+<section class="labs-header">
+  <h1>Labs</h1>
+  <p>Small Angular 20 experiments. Clean, contained, and allowed to be weird.</p>
+</section>
+
+<section class="hub" aria-label="Lab hub">
+  @for (lab of labLinks; track lab.path) {
+    <a class="lab-card" [routerLink]="['/labs', lab.path]">
+      <div class="lab-title">
+        <h2>{{ lab.title }}</h2>
+        <span class="tag">{{ lab.tag }}</span>
+      </div>
+      <p>{{ lab.description }}</p>
+      <span class="cta">Open →</span>
+    </a>
+  } @empty {
+    <p class="empty">No labs yet. That’s suspicious. Add one.</p>
+  }
+</section>

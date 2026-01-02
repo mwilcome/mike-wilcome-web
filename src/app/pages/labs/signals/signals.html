@@ -1,0 +1,61 @@
+<section class="labs-header">
+  <div class="top-row">
+    <h1>Signals Playground</h1>
+    <a class="back" routerLink="/labs">← Back to Labs</a>
+  </div>
+  <p>Signals + computed + effect, with no RxJS and no DOM weirdness.</p>
+</section>
+
+<section class="labs" aria-label="Signals Lab">
+  <article class="lab">
+    <div class="controls">
+      <label class="slider">
+        <span class="slider-label">Value: <strong>{{ value() }}</strong></span>
+
+        <input
+          #slider
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          [value]="value()"
+          (input)="setFromInput(slider.value)"
+          aria-label="Signal value slider"
+        />
+      </label>
+
+      <div class="buttons" role="group" aria-label="Quick adjustments">
+        <button type="button" (click)="nudge(-10)">-10</button>
+        <button type="button" (click)="nudge(-1)">-1</button>
+        <button type="button" (click)="nudge(1)">+1</button>
+        <button type="button" (click)="nudge(10)">+10</button>
+        <button type="button" (click)="reset()">Reset</button>
+      </div>
+    </div>
+
+    <div class="readout" aria-label="Derived values">
+      <div class="pill">Label: <strong>{{ label() }}</strong></div>
+      <div class="pill">Doubled: <strong>{{ doubled() }}</strong></div>
+      <div class="pill">Squared: <strong>{{ squared() }}</strong></div>
+    </div>
+
+    <section class="history" aria-label="Change history">
+      <h3>History (latest first)</h3>
+
+      @if (history().length === 0) {
+        <p class="muted">Move the slider or click buttons to generate entries.</p>
+      } @else {
+        <ul>
+          @for (h of history(); track $index) {
+            <li>
+              <span class="time">{{ h.at }}</span>
+              <span class="mono">v={{ h.value }}</span>
+              <span class="mono">2v={{ h.doubled }}</span>
+              <span class="mono">v²={{ h.squared }}</span>
+            </li>
+          }
+        </ul>
+      }
+    </section>
+  </article>
+</section>
