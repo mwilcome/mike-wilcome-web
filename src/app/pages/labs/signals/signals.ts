@@ -31,11 +31,13 @@ export class SignalsLab {
 
   readonly label = computed(() => {
     const v = this.value();
-    if (v === 0) return 'zero: the void stares back';
-    if (v % 15 === 0) return 'FizzBuzz';
-    if (v % 3 === 0) return 'Fizz';
-    if (v % 5 === 0) return 'Buzz';
-    return 'plain number energy';
+
+    if (v === 0) return 'Zero';
+    if (v % 15 === 0) return 'Divisible by 3 and 5';
+    if (v % 3 === 0) return 'Divisible by 3';
+    if (v % 5 === 0) return 'Divisible by 5';
+
+    return 'Not divisible by 3 or 5';
   });
 
   readonly history = signal<HistoryEntry[]>([]);

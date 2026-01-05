@@ -20,8 +20,8 @@ export class Labs {
   readonly labLinks: readonly LabLink[] = [
     {
       path: 'signals',
-      title: 'Signals Playground',
-      description: 'Signals + computed + effect, with no RxJS and no DOM weirdness.',
+      title: 'Angular Signals',
+      description: 'A small, isolated demonstration of Angular’s signal-based reactivity model.',
       tag: 'Reactive core'
     },
     {

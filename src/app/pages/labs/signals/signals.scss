@@ -5,6 +5,7 @@
   color: var(--text-color);
 }
 
+/* Match Time Drift header layout (centered group, not split alignment) */
 .labs-header {
   text-align: center;
   padding: 2.5rem 1.5rem 1.5rem;
@@ -12,68 +13,87 @@
   border-bottom: 1px solid var(--header-border);
 
   h1 {
-    font-family: var(--retro-font);
-    font-size: 2.2rem;
     margin: 0;
-    color: var(--text-color);
-    text-shadow: var(--title-glow);
+    font-family: var(--retro-font);
+    font-size: 2.5rem;
+    filter: drop-shadow(var(--title-glow));
   }
 
-  p {
-    margin: 0.5rem 0 0;
-    font-size: 1.05rem;
+  .sub {
+    margin: 0.9rem auto 0;
+    max-width: 70ch;
     color: var(--text-muted);
     font-family: var(--font-family);
   }
-}
 
-.top-row {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.back {
-  text-decoration: none;
-  color: var(--link-color);
-  font-weight: 700;
-  padding: 0.4rem 0.7rem;
-  border-radius: 0.65rem;
-  border: 1px solid var(--border-1);
-  background: var(--surface-3);
-  font-family: var(--font-family);
-
-  &:hover {
-    box-shadow: var(--shadow-1);
+  .top-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
+  .back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-1);
+    background: var(--surface-3);
+    color: var(--link-color);
+    text-decoration: none;
+    font-family: var(--retro-font);
+    font-size: 0.75rem;
+
+    &:hover {
+      border-color: var(--border-2);
+      filter: drop-shadow(var(--shadow-2));
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--accent-color);
+      outline-offset: 3px;
+    }
   }
 }
 
-.labs {
-  max-width: 980px;
+.wrap {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 1.25rem 1.5rem 3rem;
+  padding: 2rem 1.25rem 3rem;
 }
 
-.lab {
-  background: var(--surface-1);
+.panel {
   border: 1px solid var(--border-1);
-  border-radius: 1rem;
+  border-radius: 1.25rem;
+  background: var(--surface-1);
   box-shadow: var(--shadow-1);
-  padding: 1.25rem;
+  padding: 1.5rem;
+}
+
+.panel-header {
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: var(--font-family);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+    max-width: 80ch;
+    font-family: var(--font-family);
+  }
 }
 
 .controls {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.9rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .slider {
@@ -128,6 +148,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
 
@@ -146,11 +167,11 @@
 
 .history {
   h3 {
-    margin: 0 0 0.5rem;
+    margin: 1.25rem 0 0.5rem;
     font-size: 1.05rem;
     color: var(--text-color);
     font-family: var(--font-family);
-    font-weight: 800;
+    font-weight: 900;
   }
 
   ul {
@@ -188,6 +209,33 @@
   color: var(--text-muted);
   margin: 0.25rem 0 0;
   font-family: var(--font-family);
+}
+
+.notes {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-1);
+  padding-top: 1.25rem;
+
+  h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.15rem;
+    font-weight: 900;
+    font-family: var(--font-family);
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+
+    li {
+      margin: 0.4rem 0;
+    }
+
+    strong {
+      color: var(--text-color);
+    }
+  }
 }
 
 @media (min-width: 900px) {

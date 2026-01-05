@@ -5,7 +5,7 @@
   </div>
 
   <p class="sub">
-    This lab is about a quietly brutal truth: time keeps moving even when your app isn’t running.
+    Time passes whether your app is open or not. This lab shows how to measure and use that gap.
   </p>
 </section>
 
@@ -14,8 +14,9 @@
     <header class="panel-header">
       <h2>What it does</h2>
       <p>
-        We store a “checkpoint” timestamp (in localStorage), then compare it to a live clock. The difference is your
-        <strong>drift</strong> — the window you’d use for offline progression, staleness checks, and delayed work.
+        We store a checkpoint timestamp in <span class="mono">localStorage</span>, then compare it to the current time.
+        The difference is the <strong>drift</strong>: the window you can use for offline progression, staleness checks,
+        and delayed work.
       </p>
     </header>
 
@@ -79,11 +80,9 @@
     <div class="notes">
       <h3>What it’s meant to teach</h3>
       <ul>
-        <li><strong>Derived state:</strong> drift is computed, not stored.</li>
-        <li><strong>Persistence:</strong> checkpoint survives reloads because it’s saved.</li>
-        <li>
-          <strong>Offline catch-up:</strong> games and apps often turn drift into “progress while away”.
-        </li>
+        <li><strong>Derived state:</strong> drift is computed from two timestamps, not stored.</li>
+        <li><strong>Persistence:</strong> the checkpoint survives reloads because it’s saved.</li>
+        <li><strong>Catch-up logic:</strong> many apps convert drift into work completed “while away”.</li>
       </ul>
     </div>
   </article>

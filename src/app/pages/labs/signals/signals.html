@@ -1,16 +1,43 @@
 <section class="labs-header">
   <div class="top-row">
-    <h1>Signals Playground</h1>
+    <h1>Angular Signals</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
   </div>
-  <p>Signals + computed + effect, with no RxJS and no DOM weirdness.</p>
+
+  <p class="sub">
+    A small, isolated demonstration of Angular’s signal-based reactivity model.
+  </p>
 </section>
 
-<section class="labs" aria-label="Signals Lab">
-  <article class="lab">
-    <div class="controls">
+<section class="wrap" aria-label="Signals lab">
+  <article class="panel">
+    <header class="panel-header">
+      <h2>What it does</h2>
+      <p>
+        This lab uses a single <strong>signal</strong> as the source of truth, then derives values with
+        <strong>computed()</strong> and records changes with a single <strong>effect()</strong>.
+        It’s intentionally small so you can see what updates, when, and why.
+      </p>
+    </header>
+
+    <div class="readout" aria-label="Core primitives used">
+      <div class="pill">signal(): <strong>mutable state</strong></div>
+      <div class="pill">computed(): <strong>derived values</strong></div>
+      <div class="pill">effect(): <strong>side-effects</strong></div>
+      <div class="pill">untracked(): <strong>avoid feedback loops</strong></div>
+    </div>
+
+    <p class="muted">
+      As the value changes, derived values update automatically because they depend on the signal.
+      A single effect appends an entry to history. <span class="mono">untracked()</span> prevents the
+      history write from becoming a dependency that retriggers the effect.
+    </p>
+
+    <div class="controls" role="group" aria-label="Signal controls">
       <label class="slider">
-        <span class="slider-label">Value: <strong>{{ value() }}</strong></span>
+        <span class="slider-label">
+          Value: <strong>{{ value() }}</strong>
+        </span>
 
         <input
           #slider
@@ -43,7 +70,7 @@
       <h3>History (latest first)</h3>
 
       @if (history().length === 0) {
-        <p class="muted">Move the slider or click buttons to generate entries.</p>
+        <p class="muted">Interact with the controls above to generate entries.</p>
       } @else {
         <ul>
           @for (h of history(); track $index) {
@@ -57,5 +84,15 @@
         </ul>
       }
     </section>
+
+    <div class="notes">
+      <h3>What it’s meant to teach</h3>
+      <ul>
+        <li><strong>Source of truth:</strong> one signal drives everything else.</li>
+        <li><strong>Derived state:</strong> computed values update automatically from dependencies.</li>
+        <li><strong>Side-effects:</strong> effects run in response to state changes (and should be kept small).</li>
+        <li><strong>Tracking:</strong> use <span class="mono">untracked()</span> when recording state to avoid accidental dependency cycles.</li>
+      </ul>
+    </div>
   </article>
 </section>
