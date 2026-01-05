@@ -32,6 +32,13 @@ export class Labs {
       tag: 'Time + persistence'
     },
     {
+      path: 'derived-state',
+      title: 'Derived State',
+      description:
+        'Store only raw inputs. Derive validity, messages, and submit readiness with computed().',
+      tag: 'Derived values'
+    },
+    {
       path: 'theme',
       title: 'Theme Switcher',
       description: 'Flip global CSS tokens with data-theme + localStorage persistence.',

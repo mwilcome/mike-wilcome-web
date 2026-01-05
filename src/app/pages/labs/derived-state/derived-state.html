@@ -1,0 +1,116 @@
+<section class="labs-header">
+  <div class="top-row">
+    <h1>Derived State</h1>
+    <a class="back" routerLink="/labs">← Back to Labs</a>
+  </div>
+
+  <p class="sub">
+    Store inputs while avoiding the use of flags to determine state.
+  </p>
+</section>
+
+<section class="wrap" aria-label="Derived state lab">
+  <article class="panel">
+    <header class="panel-header">
+      <h2>What it does</h2>
+      <p>
+        This lab stores only the raw form inputs as state.
+        Everything else (valid flags, messages, submit enabled/disabled) is derived with
+        <strong>computed()</strong>.
+      </p>
+    </header>
+
+    <div class="form" role="group" aria-label="Example form">
+      <label class="field">
+        <span class="label">Name</span>
+        <input
+          #nameInput
+          class="input"
+          type="text"
+          autocomplete="name"
+          [value]="name()"
+          (input)="setName(nameInput.value)"
+          placeholder="Jane"
+          aria-label="Name"
+        />
+      </label>
+
+      <label class="field">
+        <span class="label">Email</span>
+        <input
+          #emailInput
+          class="input"
+          type="email"
+          autocomplete="email"
+          [value]="email()"
+          (input)="setEmail(emailInput.value)"
+          placeholder="jane@example.com"
+          aria-label="Email"
+        />
+        <div class="hint">Needs an “@” and a dot after it. That’s enough for this lab.</div>
+      </label>
+
+      <label class="field">
+        <span class="label">Username</span>
+        <input
+          #usernameInput
+          class="input"
+          type="text"
+          autocomplete="username"
+          [value]="username()"
+          (input)="setUsername(usernameInput.value)"
+          placeholder="jane_w"
+          aria-label="Username"
+        />
+        <div class="hint">3–16 chars. Letters, numbers, underscore. No spaces.</div>
+      </label>
+    </div>
+
+    <section class="readout" aria-label="Derived output">
+      <div class="pill">
+        canSubmit: <strong>{{ canSubmit() }}</strong>
+      </div>
+
+      <div class="pill">
+        emailOk: <strong>{{ emailOk() }}</strong>
+      </div>
+
+      <div class="pill">
+        usernameOk: <strong>{{ usernameOk() }}</strong>
+      </div>
+    </section>
+
+    <section class="issues" aria-label="Current issues">
+      <h3>Current issues</h3>
+
+      @if (issues().length === 0) {
+        <p class="muted">None. The form is ready.</p>
+      } @else {
+        <ul>
+          @for (issue of issues(); track issue) {
+            <li>{{ issue }}</li>
+          }
+        </ul>
+      }
+    </section>
+
+    <div class="actions" role="group" aria-label="Actions">
+      <button type="button" class="btn primary" [disabled]="!canSubmit()">
+        Submit (demo)
+      </button>
+
+      <button type="button" class="btn secondary" (click)="reset()">
+        Reset
+      </button>
+    </div>
+
+    <div class="notes">
+      <h3>What it’s meant to teach</h3>
+      <ul>
+        <li><strong>Store inputs:</strong> name/email/username are the only stored state.</li>
+        <li><strong>Derive everything else:</strong> validity and messages are computed from inputs.</li>
+        <li><strong>No drift:</strong> there’s nothing to keep in sync, so it can’t get out of date.</li>
+      </ul>
+    </div>
+  </article>
+</section>
