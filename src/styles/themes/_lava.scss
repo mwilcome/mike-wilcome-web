@@ -11,46 +11,51 @@ Defines a full token set under html[data-theme='lava'].
    ========================================================= */
 html[data-theme='lava'] {
   /* Core */
-  --bg-color: #0b0303; /* near-black volcanic rock */
-  --text-color: #ffe5dc; /* pale ash */
-  --text-muted: rgba(255, 229, 220, 0.72);
+  --bg-color: #120404; /* deep maroon-black rock (not pure black) */
+  --text-color: #ffe7df; /* pale ash */
+  --text-muted: rgba(255, 231, 223, 0.74);
 
   /* Brand / emphasis */
-  --primary-color: #dc2626; /* molten red */
-  --primary-hover: #f97316; /* hot orange flare */
-  --accent-color: #fb923c; /* ember */
-  --link-color: #f97316;
+  --primary-color: #ef4444; /* molten red */
+  --primary-hover: #fb923c; /* hot orange flare */
+  --accent-color: #f97316; /* ember */
+  --link-color: #fb923c;
 
-  /* Surfaces */
-  --surface-1: rgba(0, 0, 0, 0.38);
-  --surface-2: rgba(0, 0, 0, 0.55);
-  --surface-3: rgba(255, 229, 220, 0.06);
+  /* Surfaces (tinted, not “flat black”) */
+  --surface-1: rgba(40, 6, 6, 0.62); /* smoked crimson glass */
+  --surface-2: rgba(22, 4, 4, 0.78); /* deeper rock plate */
+  --surface-3: rgba(249, 115, 22, 0.10); /* ember wash */
 
   /* Borders */
-  --border-1: rgba(255, 229, 220, 0.14);
-  --border-2: rgba(249, 115, 22, 0.35);
+  --border-1: rgba(255, 231, 223, 0.14);
+  --border-2: rgba(249, 115, 22, 0.42);
 
   /* Depth */
-  --shadow-1: 0 18px 50px rgba(0, 0, 0, 0.65);
-  --shadow-2: 0 0 26px rgba(249, 115, 22, 0.18);
+  --shadow-1: 0 18px 50px rgba(0, 0, 0, 0.62);
+  --shadow-2: 0 0 34px rgba(249, 115, 22, 0.24);
 
   /* Header */
-  --header-bg: rgba(11, 3, 3, 0.85);
-  --header-border: rgba(249, 115, 22, 0.45);
+  --header-bg: linear-gradient(
+      180deg,
+      rgba(18, 4, 4, 0.92),
+      rgba(18, 4, 4, 0.55)
+  );
+  --header-border: rgba(249, 115, 22, 0.52);
   --title-glow:
-    0 0 14px rgba(220, 38, 38, 0.35),
-    0 0 26px rgba(249, 115, 22, 0.25);
+    0 0 16px rgba(239, 68, 68, 0.40),
+    0 0 34px rgba(249, 115, 22, 0.26);
 
-  /* Decorative */
+  /* Decorative (make lava actually show up) */
   --trash-gradient:
-    radial-gradient(circle at 25% 20%, rgba(220, 38, 38, 0.22), transparent 55%),
-    radial-gradient(circle at 75% 55%, rgba(249, 115, 22, 0.18), transparent 55%),
-    linear-gradient(180deg, #0b0303, #040101);
+    radial-gradient(circle at 18% 18%, rgba(239, 68, 68, 0.28), transparent 56%),
+    radial-gradient(circle at 78% 55%, rgba(249, 115, 22, 0.22), transparent 58%),
+    radial-gradient(circle at 55% 85%, rgba(251, 146, 60, 0.12), transparent 62%),
+    linear-gradient(180deg, #120404, #070101);
 
   --stippled-bg: repeating-linear-gradient(
       0deg,
-      rgba(255, 229, 220, 0.06) 0px,
-      rgba(255, 229, 220, 0.06) 1px,
+      rgba(255, 231, 223, 0.06) 0px,
+      rgba(255, 231, 223, 0.06) 1px,
       transparent 1px,
       transparent 8px
   );
@@ -58,12 +63,12 @@ html[data-theme='lava'] {
   --collage-pattern:
     radial-gradient(
         circle at 45% 40%,
-        rgba(220, 38, 38, 0.16) 0%,
+        rgba(239, 68, 68, 0.18) 0%,
         transparent 60%
     ),
     radial-gradient(
         circle at 70% 70%,
-        rgba(249, 115, 22, 0.14) 0%,
+        rgba(249, 115, 22, 0.16) 0%,
         transparent 60%
     );
 }

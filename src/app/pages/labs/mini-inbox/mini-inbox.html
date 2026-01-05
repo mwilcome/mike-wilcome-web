@@ -1,0 +1,288 @@
+<section class="labs-header">
+  <div class="top-row">
+    <h1>Mini Inbox</h1>
+    <a class="back" routerLink="/labs">← Back to Labs</a>
+  </div>
+
+  <p class="sub">
+    Build a small inbox UI end-to-end. Learn how Angular templates, components,
+    services, and routing fit together.
+  </p>
+</section>
+
+<section class="wrap" aria-label="Mini inbox hands-on lab">
+  <article class="panel">
+    <!-- ============================
+         ORIENTATION
+    ============================= -->
+
+    <header class="panel-header">
+      <h2>What you’re looking at</h2>
+      <p>
+        This page is a small Angular feature built as a single screen.
+        It contains a list, a detail view, and a form.
+      </p>
+      <p>
+        Nothing here is complex on purpose. The goal is to show how Angular wires
+        templates, components, and services together so the UI stays in sync
+        with state.
+      </p>
+      <p>
+        As you interact with the page, pay attention to what updates automatically
+        and what never touches the DOM directly.
+      </p>
+    </header>
+
+    <section class="panel-header">
+      <h2>What Angular is doing here</h2>
+      <ul>
+        <li>The message list is rendered from state.</li>
+        <li>Selecting a message updates shared state.</li>
+        <li>The detail panel reacts to that state change.</li>
+        <li>Buttons trigger state changes, not DOM mutations.</li>
+      </ul>
+      <p>
+        Every visible change on this page comes from state flowing through templates.
+      </p>
+    </section>
+
+    <!-- ============================
+         LAB UI
+    ============================= -->
+
+    <section class="lab-layout" aria-label="Inbox workspace">
+      <!-- LEFT COLUMN -->
+      <aside class="left" aria-label="Message list">
+        <p class="notice">
+          <strong>Notice:</strong>
+          This list is not updated manually.
+          When message state changes, Angular updates this view.
+        </p>
+
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filters">
+            <button
+              type="button"
+              class="chip"
+              [attr.data-active]="inbox.filter() === 'all' ? 'true' : 'false'"
+              (click)="setFilter('all')"
+            >
+              All
+            </button>
+
+            <button
+              type="button"
+              class="chip"
+              [attr.data-active]="inbox.filter() === 'unread' ? 'true' : 'false'"
+              (click)="setFilter('unread')"
+            >
+              Unread <span class="count">{{ inbox.unreadCount() }}</span>
+            </button>
+
+            <button
+              type="button"
+              class="chip"
+              [attr.data-active]="inbox.filter() === 'starred' ? 'true' : 'false'"
+              (click)="setFilter('starred')"
+            >
+              Starred
+            </button>
+          </div>
+
+          <label class="search">
+            <span class="sr-only">Search</span>
+            <input
+              #q
+              class="input"
+              type="search"
+              placeholder="Search"
+              [value]="inbox.query()"
+              (input)="setQuery(q.value)"
+              aria-label="Search messages"
+            />
+          </label>
+        </div>
+
+        <div class="list" role="list" aria-label="Messages">
+          @if (inbox.visibleMessages().length === 0) {
+            <div class="empty" role="note">No messages match this view.</div>
+          } @else {
+            @for (m of inbox.visibleMessages(); track m.id) {
+              <button
+                type="button"
+                class="row"
+                role="listitem"
+                [attr.data-selected]="inbox.selectedId() === m.id ? 'true' : 'false'"
+                (click)="select(m.id)"
+              >
+                <div class="row-top">
+                  <div class="from">{{ m.from }}</div>
+
+                  <div class="badges">
+                    @if (!m.read) { <span class="badge">Unread</span> }
+                    @if (m.starred) { <span class="badge">Starred</span> }
+                  </div>
+                </div>
+
+                <div class="subject">{{ m.subject }}</div>
+              </button>
+            }
+          }
+        </div>
+      </aside>
+
+      <!-- RIGHT COLUMN -->
+      <section class="right" aria-label="Message detail">
+        <p class="notice">
+          <strong>Notice:</strong>
+          Selecting a message does not pass data through the template tree.
+          The detail view reacts to shared state.
+        </p>
+
+        @if (inbox.selected() === null) {
+          <div class="blank" role="note">
+            <div class="blank-title">Select a message</div>
+            <div class="blank-text">
+              Pick a message on the left to view details and actions.
+            </div>
+          </div>
+        } @else {
+          <div class="detail">
+            <div class="detail-head">
+              <div>
+                <div class="detail-subject">{{ inbox.selected()!.subject }}</div>
+                <div class="detail-meta">
+                  From: <span class="mono">{{ inbox.selected()!.from }}</span>
+                </div>
+              </div>
+
+              <div class="detail-actions" role="group" aria-label="Message actions">
+                <button type="button" class="btn" (click)="toggleRead(inbox.selected()!.id)">
+                  @if (inbox.selected()!.read) { Mark unread } @else { Mark read }
+                </button>
+
+                <button type="button" class="btn" (click)="toggleStar(inbox.selected()!.id)">
+                  @if (inbox.selected()!.starred) { Unstar } @else { Star }
+                </button>
+
+                <button type="button" class="btn danger" (click)="archive(inbox.selected()!.id)">
+                  Archive
+                </button>
+              </div>
+            </div>
+
+            <div class="detail-body">
+              {{ inbox.selected()!.body }}
+            </div>
+          </div>
+        }
+
+        <div class="compose" aria-label="Compose message">
+          <p class="notice">
+            <strong>Notice:</strong>
+            Sending a message updates one place.
+            The list and detail views update as a result.
+          </p>
+
+          <h3>Compose</h3>
+
+          <div class="compose-grid">
+            <label class="field">
+              <span class="label">From</span>
+              <input
+                #fromInput
+                class="input"
+                type="text"
+                [value]="from()"
+                (input)="from.set(fromInput.value)"
+                aria-label="From"
+              />
+            </label>
+
+            <label class="field">
+              <span class="label">Subject</span>
+              <input
+                #subjectInput
+                class="input"
+                type="text"
+                placeholder="Subject"
+                [value]="subject()"
+                (input)="subject.set(subjectInput.value)"
+                aria-label="Subject"
+              />
+            </label>
+
+            <label class="field span2">
+              <span class="label">Body</span>
+              <textarea
+                #bodyInput
+                class="textarea"
+                rows="4"
+                placeholder="Write a message"
+                (input)="body.set(bodyInput.value)"
+                aria-label="Body"
+              >{{ body() }}</textarea>
+            </label>
+          </div>
+
+          <div class="compose-actions" role="group" aria-label="Compose actions">
+            <button
+              type="button"
+              class="btn primary"
+              [disabled]="!canCompose()"
+              (click)="compose()"
+            >
+              Send (demo)
+            </button>
+
+            <button type="button" class="btn" (click)="resetDemo()">
+              Reset demo data
+            </button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ============================
+         TEACHING SUMMARY
+    ============================= -->
+
+    <div class="notes">
+      <h2>What this lab is meant to teach</h2>
+      <ul>
+        <li>
+          <strong>Templates describe UI:</strong>
+          lists, conditions, and events live in HTML.
+        </li>
+        <li>
+          <strong>Components coordinate behavior:</strong>
+          the page handles user intent without owning all data.
+        </li>
+        <li>
+          <strong>Services own state:</strong>
+          message data and actions live outside the template.
+        </li>
+        <li>
+          <strong>State changes re-render:</strong>
+          Angular updates the view without manual DOM work.
+        </li>
+        <li>
+          <strong>Persistence is explicit:</strong>
+          saving and loading data is deliberate.
+        </li>
+      </ul>
+    </div>
+
+    <div class="reflection">
+      <h3>Stop and think</h3>
+      <p>
+        If this page were written with manual DOM updates,
+        how many places would need to change when a message is archived?
+      </p>
+      <p>
+        In Angular, that logic lives in one place.
+        Everything else reacts.
+      </p>
+    </div>
+  </article>
+</section>

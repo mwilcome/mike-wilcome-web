@@ -15,26 +15,16 @@ TOKEN SEMANTICS
 Rules:
 - Headlines may use primary/hover gradients
 - Everything uses tokens only (no hard-coded colors in components)
-*/
-
-/*
-FILE STRUCTURE
---------------------------------------------------
-Entry file: src/styles.scss
-- must contain ONLY @use rules (Sass requirement)
-
-Theme/token definitions live under:
-  src/styles/
-
-This keeps themes maintainable without changing the emitted CSS behavior.
+...
 */
 
 :root {
   --font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --retro-font: 'Press Start 2P', ui-monospace, Menlo, Monaco, monospace;
-  --mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+  'Courier New', monospace;
 
-  /* Base fallback (light - INK) */
+  /* Base fallback (light - INK-ish defaults) */
   --bg-color: #f7f8fc;
   --text-color: #0b1020;
   --text-muted: rgba(11, 16, 32, 0.72);
@@ -54,13 +44,18 @@ This keeps themes maintainable without changing the emitted CSS behavior.
   --shadow-1: 0 18px 45px rgba(11, 16, 32, 0.12);
   --shadow-2: 0 0 22px rgba(109, 40, 217, 0.12);
 
-  --header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.30));
+  --header-bg: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(255, 255, 255, 0.30)
+  );
   --header-border: rgba(11, 16, 32, 0.10);
   --title-glow: 0 0 20px rgba(109, 40, 217, 0.22);
 
-  --trash-gradient: radial-gradient(circle at 20% 20%, rgba(109, 40, 217, 0.12), transparent 55%),
-  radial-gradient(circle at 70% 60%, rgba(14, 165, 233, 0.10), transparent 55%),
-  linear-gradient(180deg, #f7f8fc, #eef0f8);
+  --trash-gradient:
+    radial-gradient(circle at 20% 20%, rgba(109, 40, 217, 0.12), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(14, 165, 233, 0.10), transparent 55%),
+    linear-gradient(180deg, #f7f8fc, #eef0f8);
 
   --stippled-bg: repeating-linear-gradient(
       0deg,
@@ -86,7 +81,17 @@ body {
 body {
   margin: 0;
   font-family: var(--font-family);
-  background: var(--bg-color);
+
+  background-color: var(--bg-color);
+  background-image: var(--trash-gradient, none);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+
   color: var(--text-color);
 }
 
@@ -96,4 +101,14 @@ a {
 
 .mono {
   font-family: var(--mono-font);
+}
+
+:where(a, button, input, textarea, select, summary, [role='button'], [tabindex]:not([tabindex='-1'])):focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary-color) 35%, transparent);
+  color: var(--text-color);
 }

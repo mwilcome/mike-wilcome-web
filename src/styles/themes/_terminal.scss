@@ -18,8 +18,9 @@ html[data-theme='terminal'] {
   --accent-color: #00e5ff;
   --link-color: #32ff7e;
 
-  --surface-1: rgba(0, 0, 0, 0.38);
-  --surface-2: rgba(0, 0, 0, 0.50);
+  /* Surfaces: keep "dark", but tint toward green-black instead of pure black */
+  --surface-1: rgba(5, 20, 12, 0.48);
+  --surface-2: rgba(3, 12, 8, 0.62);
   --surface-3: rgba(215, 255, 231, 0.06);
 
   --border-1: rgba(215, 255, 231, 0.14);
@@ -28,13 +29,21 @@ html[data-theme='terminal'] {
   --shadow-1: 0 18px 50px rgba(0, 0, 0, 0.55);
   --shadow-2: 0 0 22px rgba(50, 255, 126, 0.12);
 
-  --header-bg: rgba(0, 0, 0, 0.50);
+  /* Header: subtle CRT fade instead of a flat slab */
+  --header-bg: linear-gradient(
+      180deg,
+      rgba(2, 10, 6, 0.72),
+      rgba(0, 0, 0, 0.45)
+  );
   --header-border: rgba(50, 255, 126, 0.25);
   --title-glow: 0 0 18px rgba(50, 255, 126, 0.18);
 
-  --trash-gradient: radial-gradient(circle at 30% 20%, rgba(50, 255, 126, 0.10), transparent 55%),
-  radial-gradient(circle at 70% 60%, rgba(0, 229, 255, 0.08), transparent 55%),
-  linear-gradient(180deg, #050807, #020403);
+  /* Background: add depth + a faint phosphor haze (still restrained) */
+  --trash-gradient:
+    radial-gradient(circle at 22% 18%, rgba(50, 255, 126, 0.14), transparent 58%),
+    radial-gradient(circle at 70% 60%, rgba(0, 229, 255, 0.10), transparent 60%),
+    radial-gradient(circle at 55% 88%, rgba(50, 255, 126, 0.06), transparent 62%),
+    linear-gradient(180deg, #050807, #020403);
 
   --stippled-bg: repeating-linear-gradient(
       0deg,

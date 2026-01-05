@@ -7,5 +7,8 @@ export const LABS_ROUTES: Routes = [
   { path: 'derived-state', loadComponent: () => import('./derived-state/derived-state').then(m => m.DerivedStateLab) },
   { path: 'theme', loadComponent: () => import('./theme/theme').then(m => m.ThemeLab) },
 
+  // Hands-on
+  { path: 'mini-inbox', loadComponent: () => import('./mini-inbox/mini-inbox').then(m => m.MiniInboxLab) },
+
   { path: '**', redirectTo: '' }
 ];

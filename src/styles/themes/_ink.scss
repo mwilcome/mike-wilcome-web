@@ -20,7 +20,9 @@ html[data-theme='ink'] {
 
   --surface-1: rgba(255, 255, 255, 0.82);
   --surface-2: rgba(255, 255, 255, 0.92);
-  --surface-3: rgba(11, 16, 32, 0.06);
+
+  /* Slight purple-ish undertone (still reads neutral light) */
+  --surface-3: rgba(109, 40, 217, 0.06);
 
   --border-1: rgba(11, 16, 32, 0.12);
   --border-2: rgba(14, 165, 233, 0.22);
@@ -28,13 +30,20 @@ html[data-theme='ink'] {
   --shadow-1: 0 18px 45px rgba(11, 16, 32, 0.12);
   --shadow-2: 0 0 22px rgba(109, 40, 217, 0.12);
 
-  --header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.30));
+  --header-bg: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(255, 255, 255, 0.30)
+  );
   --header-border: rgba(11, 16, 32, 0.10);
   --title-glow: 0 0 20px rgba(109, 40, 217, 0.22);
 
-  --trash-gradient: radial-gradient(circle at 20% 20%, rgba(109, 40, 217, 0.12), transparent 55%),
-  radial-gradient(circle at 70% 60%, rgba(14, 165, 233, 0.10), transparent 55%),
-  linear-gradient(180deg, #f7f8fc, #eef0f8);
+  /* Background: keep existing, add a gentle lavender glow so it feels "designed" */
+  --trash-gradient:
+    radial-gradient(circle at 18% 18%, rgba(109, 40, 217, 0.12), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(14, 165, 233, 0.10), transparent 55%),
+    radial-gradient(circle at 55% 35%, rgba(167, 139, 250, 0.10), transparent 62%),
+    linear-gradient(180deg, #f7f8fc, #eef0f8);
 
   --stippled-bg: repeating-linear-gradient(
       0deg,

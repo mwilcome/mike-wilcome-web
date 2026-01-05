@@ -7,19 +7,64 @@
   <p class="sub">
     Small Angular experiments and labs for exploring modern Angular concepts.
   </p>
+
+  <nav class="hub-nav" aria-label="Lab categories">
+    <button class="pill" type="button" (click)="scrollTo('explore')">Explore</button>
+    <button class="pill" type="button" (click)="scrollTo('hands-on')">Hands-on</button>
+  </nav>
 </section>
 
 <section class="hub" aria-label="Lab hub">
-  @for (lab of labLinks; track lab.path) {
-    <a class="lab-card" [routerLink]="['/labs', lab.path]">
-      <div class="lab-title">
-        <h2>{{ lab.title }}</h2>
-        <span class="tag">{{ lab.tag }}</span>
-      </div>
-      <p>{{ lab.description }}</p>
-      <span class="cta">Open →</span>
-    </a>
-  } @empty {
-    <p class="empty">No labs yet. That’s suspicious. Add one.</p>
-  }
+  <section class="bucket" id="explore" aria-label="Explore labs">
+    <header class="bucket-header">
+      <h2>Explore</h2>
+      <p>Short labs intended for reading, running, and experimenting.</p>
+    </header>
+
+    <div class="grid">
+      @for (lab of exploreLabs; track lab.path) {
+        <a class="lab-card" [routerLink]="['/labs', lab.path]">
+          <div class="lab-title">
+            <h3>{{ lab.title }}</h3>
+            <span class="tag">{{ lab.tag }}</span>
+          </div>
+
+          <p>{{ lab.description }}</p>
+          <span class="cta">Open →</span>
+        </a>
+      } @empty {
+        <p class="empty">No explore labs are currently listed.</p>
+      }
+    </div>
+  </section>
+
+  <section class="bucket" id="hands-on" aria-label="Hands-on labs">
+    <header class="bucket-header">
+      <h2>Hands-on</h2>
+      <p>Guided labs focused on building something end-to-end.</p>
+    </header>
+
+    <div class="grid">
+      @if (handsOnLabs.length === 0) {
+        <div class="placeholder" role="note">
+          <div class="placeholder-title">No hands-on labs listed</div>
+          <div class="placeholder-text">
+            This section is reserved for more structured, end-to-end exercises.
+          </div>
+        </div>
+      } @else {
+        @for (lab of handsOnLabs; track lab.path) {
+          <a class="lab-card" [routerLink]="['/labs', lab.path]">
+            <div class="lab-title">
+              <h3>{{ lab.title }}</h3>
+              <span class="tag">{{ lab.tag }}</span>
+            </div>
+
+            <p>{{ lab.description }}</p>
+            <span class="cta">Open →</span>
+          </a>
+        }
+      }
+    </div>
+  </section>
 </section>

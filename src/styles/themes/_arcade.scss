@@ -18,26 +18,34 @@ html[data-theme='arcade'] {
   --accent-color: #ffe066;
   --link-color: #2ee9ff;
 
-  --surface-1: rgba(0, 0, 0, 0.42);
-  --surface-2: rgba(0, 0, 0, 0.55);
-  --surface-3: rgba(255, 255, 255, 0.06);
+  /* Surfaces: keep dark, but tint toward deep arcade-blue instead of pure black */
+  --surface-1: rgba(12, 14, 48, 0.52);
+  --surface-2: rgba(7, 10, 34, 0.70);
+  --surface-3: rgba(245, 247, 255, 0.06);
 
-  --border-1: rgba(255, 255, 255, 0.12);
+  --border-1: rgba(245, 247, 255, 0.12);
   --border-2: rgba(255, 224, 102, 0.35);
 
-  --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.40);
   --shadow-2: 0 0 18px rgba(46, 233, 255, 0.14);
 
-  --header-bg: rgba(7, 11, 42, 0.82);
-  --header-border: rgba(255, 224, 102, 0.8);
+  /* Header: gradient glass instead of a flat slab */
+  --header-bg: linear-gradient(
+      180deg,
+      rgba(7, 11, 42, 0.86),
+      rgba(7, 11, 42, 0.55)
+  );
+  --header-border: rgba(255, 224, 102, 0.80);
   --title-glow:
     0 0 16px rgba(46, 233, 255, 0.25),
     0 0 28px rgba(255, 46, 166, 0.18);
 
+  /* Background: same palette, slightly more "neon haze" depth */
   --trash-gradient:
-    radial-gradient(circle at 20% 10%, rgba(255, 46, 166, 0.22), transparent 55%),
+    radial-gradient(circle at 18% 12%, rgba(255, 46, 166, 0.22), transparent 55%),
     radial-gradient(circle at 85% 40%, rgba(46, 233, 255, 0.18), transparent 55%),
-    radial-gradient(circle at 40% 95%, rgba(255, 224, 102, 0.12), transparent 60%),
+    radial-gradient(circle at 42% 92%, rgba(255, 224, 102, 0.12), transparent 60%),
+    radial-gradient(circle at 55% 55%, rgba(46, 233, 255, 0.06), transparent 62%),
     linear-gradient(180deg, #070b2a, #06071a);
 
   --stippled-bg: repeating-radial-gradient(
@@ -47,4 +55,10 @@ html[data-theme='arcade'] {
       transparent 1px,
       transparent 8px
   );
+
+  /* Add: pattern token so components can opt-in to "arcade texture" */
+  --collage-pattern:
+    radial-gradient(circle at 30% 35%, rgba(255, 46, 166, 0.12), transparent 60%),
+    radial-gradient(circle at 80% 40%, rgba(46, 233, 255, 0.10), transparent 58%),
+    radial-gradient(circle at 60% 85%, rgba(255, 224, 102, 0.08), transparent 62%);
 }
