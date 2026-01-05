@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Press+Start+2P&display=swap');
+
+/*
+TOKEN SEMANTICS
+--------------------------------------------------
+--text-color      : primary readable text
+--text-muted      : secondary/supporting text
+
+--primary-color   : strong identity / hero emphasis
+--primary-hover   : secondary identity / motion
+
+--link-color      : interactive affordances
+--accent-color    : highlights, focus rings, chips
+
+Rules:
+- Headlines may use primary/hover gradients
+- Everything uses tokens only (no hard-coded colors in components)
+*/
+
+/*
+FILE STRUCTURE
+--------------------------------------------------
+Entry file: src/styles.scss
+- must contain ONLY @use rules (Sass requirement)
+
+Theme/token definitions live under:
+  src/styles/
+
+This keeps themes maintainable without changing the emitted CSS behavior.
+*/
+
+:root {
+  --font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --retro-font: 'Press Start 2P', ui-monospace, Menlo, Monaco, monospace;
+  --mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* Base fallback (light - INK) */
+  --bg-color: #f7f8fc;
+  --text-color: #0b1020;
+  --text-muted: rgba(11, 16, 32, 0.72);
+
+  --primary-color: #6d28d9;
+  --primary-hover: #0ea5e9;
+  --accent-color: #22c55e;
+  --link-color: #0ea5e9;
+
+  --surface-1: rgba(255, 255, 255, 0.82);
+  --surface-2: rgba(255, 255, 255, 0.92);
+  --surface-3: rgba(11, 16, 32, 0.06);
+
+  --border-1: rgba(11, 16, 32, 0.12);
+  --border-2: rgba(14, 165, 233, 0.22);
+
+  --shadow-1: 0 18px 45px rgba(11, 16, 32, 0.12);
+  --shadow-2: 0 0 22px rgba(109, 40, 217, 0.12);
+
+  --header-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.30));
+  --header-border: rgba(11, 16, 32, 0.10);
+  --title-glow: 0 0 20px rgba(109, 40, 217, 0.22);
+
+  --trash-gradient: radial-gradient(circle at 20% 20%, rgba(109, 40, 217, 0.12), transparent 55%),
+  radial-gradient(circle at 70% 60%, rgba(14, 165, 233, 0.10), transparent 55%),
+  linear-gradient(180deg, #f7f8fc, #eef0f8);
+
+  --stippled-bg: repeating-linear-gradient(
+      0deg,
+      rgba(11, 16, 32, 0.04) 0px,
+      rgba(11, 16, 32, 0.04) 1px,
+      transparent 1px,
+      transparent 8px
+  );
+
+  --collage-pattern: radial-gradient(
+      circle at 55% 45%,
+      rgba(109, 40, 217, 0.10) 0%,
+      rgba(14, 165, 233, 0.08) 28%,
+      transparent 62%
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+.mono {
+  font-family: var(--mono-font);
+}

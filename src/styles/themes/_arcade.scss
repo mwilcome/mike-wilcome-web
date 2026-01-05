@@ -1,0 +1,50 @@
+/*
+THEME: ARCADE
+--------------------------------------------------
+Dark raven / neon arcade look.
+Defines a full token set under html[data-theme='arcade'].
+*/
+
+/* =========================================================
+   Theme: ARCADE (dark, raven, blue)
+   ========================================================= */
+html[data-theme='arcade'] {
+  --bg-color: #070b2a;
+  --text-color: #f5f7ff;
+  --text-muted: rgba(245, 247, 255, 0.78);
+
+  --primary-color: #ff2ea6;
+  --primary-hover: #2ee9ff;
+  --accent-color: #ffe066;
+  --link-color: #2ee9ff;
+
+  --surface-1: rgba(0, 0, 0, 0.42);
+  --surface-2: rgba(0, 0, 0, 0.55);
+  --surface-3: rgba(255, 255, 255, 0.06);
+
+  --border-1: rgba(255, 255, 255, 0.12);
+  --border-2: rgba(255, 224, 102, 0.35);
+
+  --shadow-1: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 0 18px rgba(46, 233, 255, 0.14);
+
+  --header-bg: rgba(7, 11, 42, 0.82);
+  --header-border: rgba(255, 224, 102, 0.8);
+  --title-glow:
+    0 0 16px rgba(46, 233, 255, 0.25),
+    0 0 28px rgba(255, 46, 166, 0.18);
+
+  --trash-gradient:
+    radial-gradient(circle at 20% 10%, rgba(255, 46, 166, 0.22), transparent 55%),
+    radial-gradient(circle at 85% 40%, rgba(46, 233, 255, 0.18), transparent 55%),
+    radial-gradient(circle at 40% 95%, rgba(255, 224, 102, 0.12), transparent 60%),
+    linear-gradient(180deg, #070b2a, #06071a);
+
+  --stippled-bg: repeating-radial-gradient(
+      circle,
+      rgba(245, 247, 255, 0.22) 0px,
+      rgba(245, 247, 255, 0.22) 1px,
+      transparent 1px,
+      transparent 8px
+  );
+}
