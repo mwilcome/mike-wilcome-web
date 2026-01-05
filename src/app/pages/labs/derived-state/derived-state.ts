@@ -36,15 +36,16 @@ export class DerivedStateLab {
 
     if (username.length === 0) {
       problems.push('Username is required.');
-    } else {
+    } else if (!this.isUsernameOk(username)) {
+      // Keep the messages specific so the user knows why.
       if (username.length < 3 || username.length > 16) {
         problems.push('Username must be 3–16 characters.');
       }
-      if (!this.isUsernameOk(username)) {
-        problems.push('Username can only use letters, numbers, and underscore.');
-      }
       if (/\s/.test(username)) {
         problems.push('Username cannot contain spaces.');
+      }
+      if (!/^[A-Za-z0-9_]+$/.test(username)) {
+        problems.push('Username can only use letters, numbers, and underscore.');
       }
     }
 

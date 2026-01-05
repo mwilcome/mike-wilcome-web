@@ -1,41 +1,110 @@
 <section class="labs-header">
   <div class="top-row">
-    <h1>Theme Switcher</h1>
+    <h1>Themes</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
   </div>
-  <p>Flip global CSS tokens by setting <code>data-theme</code> on the document.</p>
+
+  <p class="sub">
+    Themes are just CSS variables. We set <span class="mono">data-theme</span> on <span class="mono">&lt;html&gt;</span>,
+    and the token values change everywhere.
+  </p>
 </section>
 
-<section class="labs" aria-label="Theme lab">
-  <article class="lab">
-    <header class="lab-header">
-      <h2>Choose a theme</h2>
-      <p>This updates global CSS variables (and saves your choice in localStorage).</p>
+<section class="wrap" aria-label="Theme lab">
+  <article class="panel">
+    <header class="panel-header">
+      <h2>What it does</h2>
+      <p>
+        Pick a theme. The app updates <span class="mono">html[data-theme]</span>.
+        That activates a different set of CSS variable values from <span class="mono">styles.scss</span>.
+      </p>
     </header>
 
-    <div class="theme-buttons" role="group" aria-label="Theme selection">
-      @for (t of themes; track t) {
-        <button
-          type="button"
-          class="theme-btn"
-          [class.active]="theme() === t"
-          (click)="setTheme(t)"
-        >
-          {{ t }}
+    <section class="controls" aria-label="Theme selection">
+      <h3>Choose a theme</h3>
+
+      <div class="theme-buttons" role="group" aria-label="Theme buttons">
+        @for (t of themes; track t) {
+          <button
+            type="button"
+            class="theme-btn"
+            [class.active]="theme() === t"
+            (click)="setTheme(t)"
+          >
+            {{ t }}
+          </button>
+        }
+      </div>
+
+      <div class="readout" aria-label="Current theme">
+        <div class="pill">Current: <strong>{{ theme() }}</strong></div>
+        <button type="button" class="btn ghost" (click)="refreshTokens()">
+          Refresh tokens
         </button>
-      }
-    </div>
+      </div>
+    </section>
 
-    <div class="readout">
-      <div class="pill">Current: <strong>{{ theme() }}</strong></div>
-      <div class="pill">bg: <strong class="swatch bg"></strong></div>
-      <div class="pill">primary: <strong class="swatch primary"></strong></div>
-      <div class="pill">accent: <strong class="swatch accent"></strong></div>
-    </div>
+    <section class="inspector" aria-label="Token inspector">
+      <div class="inspector-head">
+        <h3>Token inspector</h3>
+        <p class="muted">
+          These are the resolved values from <span class="mono">getComputedStyle(document.documentElement)</span>.
+          This is what your components actually see when they use <span class="mono">var(--...)</span>.
+        </p>
+      </div>
 
-    <p class="note">
-      Implementation detail: this lab writes to <code>&lt;html data-theme="..."&gt;</code>,
-      so any token overrides in <code>[data-theme="..."]</code> kick in globally.
-    </p>
+      <div class="token-grid" role="table" aria-label="Resolved CSS tokens">
+        <div class="token-row token-header" role="row">
+          <div class="cell name" role="columnheader">Token</div>
+          <div class="cell value" role="columnheader">Value</div>
+          <div class="cell preview" role="columnheader">Preview</div>
+        </div>
+
+        @for (row of tokenRows(); track row.token) {
+          <div class="token-row" role="row">
+            <div class="cell name mono" role="cell">{{ row.token }}</div>
+            <div class="cell value mono" role="cell">{{ row.value }}</div>
+            <div class="cell preview" role="cell">
+              @if (row.preview) {
+                <span class="swatch" [style.background]="row.preview" aria-hidden="true"></span>
+              } @else {
+                <span class="muted">—</span>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="demo" aria-label="Example UI using tokens">
+      <h3>Example UI</h3>
+      <p class="muted">
+        This block doesn’t pick colors. It uses the same tokens your real pages use.
+      </p>
+
+      <div class="demo-card">
+        <div class="demo-title">Card</div>
+        <div class="demo-body">
+          Background uses <span class="mono">--surface-1</span>. Borders use <span class="mono">--border-1</span>.
+          Links use <span class="mono">--link-color</span>.
+        </div>
+
+        <div class="demo-actions">
+          <button type="button" class="btn primary">Primary</button>
+          <button type="button" class="btn secondary">Secondary</button>
+          <a class="demo-link" href="javascript:void(0)">Link</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="notes">
+      <h3>What it’s meant to teach</h3>
+      <ul>
+        <li><strong>Source of truth:</strong> token values live in <span class="mono">styles.scss</span>.</li>
+        <li><strong>Switching:</strong> setting <span class="mono">html[data-theme]</span> swaps token values globally.</li>
+        <li><strong>Usage:</strong> components should only use <span class="mono">var(--token)</span>, not hard-coded colors.</li>
+        <li><strong>Debugging:</strong> <span class="mono">getComputedStyle</span> tells you what the browser resolved.</li>
+      </ul>
+    </div>
   </article>
 </section>

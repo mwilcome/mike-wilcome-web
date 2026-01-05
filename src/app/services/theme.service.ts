@@ -1,14 +1,14 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 
-export type ThemeName = 'arcade' | 'ink' | 'terminal' | 'lava';
+export type ThemeName = 'arcade' | 'ink' | 'terminal' | 'ocean' | 'lava';
 
 const STORAGE_KEY = 'mw.theme';
 
 // Single source of truth for:
 // - what themes exist
 // - the cycle order
-const THEME_ORDER: readonly ThemeName[] = ['ink', 'terminal', 'arcade', 'lava'] as const;
+const THEME_ORDER: readonly ThemeName[] = ['ink', 'terminal', 'arcade', 'ocean', 'lava'] as const;
 
 // First-time default (only used when nothing is in localStorage)
 const DEFAULT_THEME: ThemeName = 'ink';
@@ -23,7 +23,6 @@ export class ThemeService {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly doc = inject(DOCUMENT);
 
-  // Expose list so UIs (Theme Lab, future menus) can render dynamically
   readonly themes = THEME_ORDER;
 
   readonly theme = signal<ThemeName>(this.readInitialTheme());
@@ -37,6 +36,7 @@ export class ThemeService {
 
       this.doc.documentElement.dataset['theme'] = t;
       localStorage.setItem(STORAGE_KEY, t);
+
     });
   }
 
