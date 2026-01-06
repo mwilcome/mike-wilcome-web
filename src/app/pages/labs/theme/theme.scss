@@ -94,6 +94,11 @@ h3 {
 .mono {
   font-family: var(--mono-font);
   font-size: 0.95em;
+
+  /* ✅ Allow long code-like strings to wrap on narrow screens */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .muted {
@@ -173,6 +178,12 @@ h3 {
 .inspector-head {
   display: grid;
   gap: 0.35rem;
+
+  .muted {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 }
 
 .token-grid {
@@ -211,6 +222,10 @@ h3 {
   &:last-child {
     border-right: 0;
   }
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .cell.preview {
