@@ -29,6 +29,9 @@ This keeps themes maintainable without changing the emitted CSS behavior.
 /* Core tokens + base element defaults */
 @use './styles/tokens';
 
+/* Shared UI primitives */
+@use './styles/ui';
+
 /* Theme overrides */
 @use './styles/themes/arcade';
 @use './styles/themes/ink';
