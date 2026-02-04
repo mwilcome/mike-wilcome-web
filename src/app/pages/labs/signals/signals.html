@@ -1,4 +1,4 @@
-<section class="labs-header">
+<section class="ui-labs-header">
   <div class="top-row">
     <h1>Angular Signals</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
@@ -9,9 +9,9 @@
   </p>
 </section>
 
-<section class="wrap" aria-label="Signals lab">
-  <article class="panel">
-    <header class="panel-header">
+<section class="ui-wrap" aria-label="Signals lab">
+  <article class="ui-panel">
+    <header class="ui-panel-header">
       <h2>What it does</h2>
       <p>
         This lab uses a single <strong>signal</strong> as the source of truth, then derives values with
@@ -21,13 +21,13 @@
     </header>
 
     <div class="readout" aria-label="Core primitives used">
-      <div class="pill">signal(): <strong>mutable state</strong></div>
-      <div class="pill">computed(): <strong>derived values</strong></div>
-      <div class="pill">effect(): <strong>side-effects</strong></div>
-      <div class="pill">untracked(): <strong>avoid feedback loops</strong></div>
+      <div class="ui-readout-pill">signal(): <strong>mutable state</strong></div>
+      <div class="ui-readout-pill">computed(): <strong>derived values</strong></div>
+      <div class="ui-readout-pill">effect(): <strong>side-effects</strong></div>
+      <div class="ui-readout-pill">untracked(): <strong>avoid feedback loops</strong></div>
     </div>
 
-    <p class="muted">
+    <p class="ui-muted">
       As the value changes, derived values update automatically because they depend on the signal.
       A single effect appends an entry to history. <span class="mono">untracked()</span> prevents the
       history write from becoming a dependency that retriggers the effect.
@@ -61,16 +61,16 @@
     </div>
 
     <div class="readout" aria-label="Derived values">
-      <div class="pill">Label: <strong>{{ label() }}</strong></div>
-      <div class="pill">Doubled: <strong>{{ doubled() }}</strong></div>
-      <div class="pill">Squared: <strong>{{ squared() }}</strong></div>
+      <div class="ui-readout-pill">Label: <strong>{{ label() }}</strong></div>
+      <div class="ui-readout-pill">Doubled: <strong>{{ doubled() }}</strong></div>
+      <div class="ui-readout-pill">Squared: <strong>{{ squared() }}</strong></div>
     </div>
 
     <section class="history" aria-label="Change history">
       <h3>History (latest first)</h3>
 
       @if (history().length === 0) {
-        <p class="muted">Interact with the controls above to generate entries.</p>
+        <p class="ui-muted">Interact with the controls above to generate entries.</p>
       } @else {
         <ul>
           @for (h of history(); track $index) {
@@ -85,7 +85,7 @@
       }
     </section>
 
-    <div class="notes">
+    <div class="ui-notes">
       <h3>What it’s meant to teach</h3>
       <ul>
         <li><strong>Source of truth:</strong> one signal drives everything else.</li>

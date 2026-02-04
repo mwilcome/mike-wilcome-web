@@ -1,4 +1,4 @@
-<section class="labs-header">
+<section class="ui-labs-header">
   <div class="top-row">
     <h1>Time Drift</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
@@ -9,9 +9,9 @@
   </p>
 </section>
 
-<section class="wrap" aria-label="Time drift lab">
-  <article class="panel">
-    <header class="panel-header">
+<section class="ui-wrap" aria-label="Time drift lab">
+  <article class="ui-panel">
+    <header class="ui-panel-header">
       <h2>What it does</h2>
       <p>
         We store a checkpoint timestamp in <span class="mono">localStorage</span>, then compare it to the current time.
@@ -39,7 +39,7 @@
     </div>
 
     <div class="controls" role="group" aria-label="Time drift controls">
-      <button type="button" class="btn primary" (click)="saveCheckpoint()">
+      <button type="button" class="ui-btn ui-btn--gradient" (click)="saveCheckpoint()">
         Save checkpoint
       </button>
 
@@ -67,17 +67,17 @@
           <option value="days">days</option>
         </select>
 
-        <button type="button" class="btn secondary" (click)="simulateOffline()">
+        <button type="button" class="ui-btn ui-btn--plain" (click)="simulateOffline()">
           Apply
         </button>
       </div>
 
-      <button type="button" class="btn ghost" (click)="resetStorage()">
+      <button type="button" class="ui-btn ui-btn--ghost" (click)="resetStorage()">
         Reset (clear storage)
       </button>
     </div>
 
-    <div class="notes">
+    <div class="ui-notes">
       <h3>What it’s meant to teach</h3>
       <ul>
         <li><strong>Derived state:</strong> drift is computed from two timestamps, not stored.</li>

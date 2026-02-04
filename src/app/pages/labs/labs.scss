@@ -20,63 +20,6 @@
 }
 
 /* --------------------------------------------------
-   Header (MATCHES Derived/Signals pattern)
--------------------------------------------------- */
-
-.labs-header {
-  text-align: center;
-  padding: 2.5rem 1.5rem 1.5rem;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-
-  h1 {
-    margin: 0;
-    font-family: var(--retro-font);
-    font-size: 2.5rem;
-    filter: drop-shadow(var(--title-glow));
-  }
-
-  .sub {
-    margin: 0.9rem auto 0;
-    max-width: 70ch;
-    color: var(--text-muted);
-    font-family: var(--font-family);
-  }
-
-  .top-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .back {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    border: 1px solid var(--border-1);
-    background: var(--surface-3);
-    color: var(--link-color);
-    text-decoration: none;
-    font-family: var(--retro-font);
-    font-size: 0.75rem;
-
-    &:hover {
-      border-color: var(--border-2);
-      filter: drop-shadow(var(--shadow-2));
-    }
-
-    &:focus-visible {
-      outline: 3px solid var(--accent-color);
-      outline-offset: 3px;
-    }
-  }
-}
-
-/* --------------------------------------------------
    Hub nav
 -------------------------------------------------- */
 
@@ -86,35 +29,6 @@
   gap: 0.6rem;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.pill {
-  appearance: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-
-  border: 1px solid var(--border-1);
-  background: var(--surface-1);
-  color: var(--link-color);
-  text-decoration: none;
-
-  font-family: var(--mono-font);
-  font-size: 0.85rem;
-
-  &:hover {
-    border-color: var(--border-2);
-    box-shadow: var(--shadow-1);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-  }
 }
 
 /* --------------------------------------------------
@@ -164,37 +78,8 @@
 }
 
 /* --------------------------------------------------
-   Cards
+   Card overrides for lab cards
 -------------------------------------------------- */
-
-.lab-card {
-  display: block;
-  text-decoration: none;
-  padding: 1.25rem;
-  border-radius: 1rem;
-  background: var(--surface-1);
-  border: 1px solid var(--border-1);
-  box-shadow: var(--shadow-1);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-  font-family: var(--font-family);
-  color: inherit;
-
-  &:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-2);
-    box-shadow: var(--shadow-1);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-  }
-
-  p {
-    margin: 0.5rem 0 0.75rem;
-    color: var(--text-muted);
-  }
-}
 
 .lab-title {
   display: flex;
@@ -211,6 +96,10 @@
   }
 }
 
+.ui-card p {
+  margin: 0.5rem 0 0.75rem;
+}
+
 .tag {
   border: 1px solid var(--border-1);
   background: var(--surface-3);
@@ -219,14 +108,6 @@
   color: var(--text-muted);
   white-space: nowrap;
   font-family: var(--font-family);
-}
-
-.cta {
-  display: inline-block;
-  color: var(--link-color);
-  font-weight: 800;
-  font-family: var(--retro-font);
-  font-size: 0.75rem;
 }
 
 /* --------------------------------------------------

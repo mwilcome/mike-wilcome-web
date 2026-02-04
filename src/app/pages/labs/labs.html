@@ -1,4 +1,4 @@
-<section class="labs-header">
+<section class="ui-labs-header">
   <div class="top-row">
     <h1>Labs</h1>
     <a class="back" routerLink="/">← Back to Home</a>
@@ -9,8 +9,8 @@
   </p>
 
   <nav class="hub-nav" aria-label="Lab categories">
-    <button class="pill" type="button" (click)="scrollTo('explore')">Explore</button>
-    <button class="pill" type="button" (click)="scrollTo('hands-on')">Hands-on</button>
+    <button class="ui-pill" type="button" (click)="scrollTo('explore')">Explore</button>
+    <button class="ui-pill" type="button" (click)="scrollTo('hands-on')">Hands-on</button>
   </nav>
 </section>
 
@@ -23,14 +23,14 @@
 
     <div class="grid">
       @for (lab of exploreLabs; track lab.path) {
-        <a class="lab-card" [routerLink]="['/labs', lab.path]">
+        <a class="ui-card" [routerLink]="['/labs', lab.path]">
           <div class="lab-title">
             <h3>{{ lab.title }}</h3>
             <span class="tag">{{ lab.tag }}</span>
           </div>
 
           <p>{{ lab.description }}</p>
-          <span class="cta">Open →</span>
+          <span class="ui-link">Open →</span>
         </a>
       } @empty {
         <p class="empty">No explore labs are currently listed.</p>
@@ -54,14 +54,14 @@
         </div>
       } @else {
         @for (lab of handsOnLabs; track lab.path) {
-          <a class="lab-card" [routerLink]="['/labs', lab.path]">
+          <a class="ui-card" [routerLink]="['/labs', lab.path]">
             <div class="lab-title">
               <h3>{{ lab.title }}</h3>
               <span class="tag">{{ lab.tag }}</span>
             </div>
 
             <p>{{ lab.description }}</p>
-            <span class="cta">Open →</span>
+            <span class="ui-link">Open →</span>
           </a>
         }
       }

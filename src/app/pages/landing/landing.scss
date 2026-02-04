@@ -149,50 +149,9 @@ h1 {
   gap: 0.75rem;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* Landing buttons are slightly larger than the default ui-btn */
+.ui-btn {
   padding: 0.9rem 1.2rem;
-  border-radius: 0.9rem;
-  font-weight: 900;
-  text-decoration: none;
-  border: 1px solid var(--border-1);
-  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-  font-family: var(--font-family);
-
-  &:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(var(--shadow-2));
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-  }
-}
-
-.btn.primary {
-  background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
-  color: #0b1020;
-  border-color: var(--border-2);
-}
-
-:host-context(html[data-theme='ink']) .btn.primary {
-  color: #ffffff;
-}
-
-:host-context(html[data-theme='terminal']) .btn.primary {
-  color: #001a0b;
-}
-
-:host-context(html[data-theme='lava']) .btn.primary {
-  color: #140405;
-}
-
-.btn.secondary {
-  background: var(--surface-3);
-  color: var(--text-color);
 }
 
 .hero-image {
@@ -239,81 +198,10 @@ h1 {
   }
 }
 
-.cards-link {
-  font-family: var(--retro-font);
-  font-size: 0.75rem;
-  color: var(--link-color);
-  opacity: 0.95;
-
-  &:hover {
-    color: var(--primary-hover);
-    filter: drop-shadow(var(--shadow-2));
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-    border-radius: 0.5rem;
-  }
-}
-
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-}
-
-.card {
-  display: block;
-  padding: 1.25rem 1.25rem 1.1rem;
-  border-radius: 1rem;
-  background: var(--surface-1);
-  border: 1px solid var(--border-1);
-  box-shadow: var(--shadow-1);
-  transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
-  text-decoration: none;
-
-  &:hover {
-    transform: translateY(-3px);
-    border-color: var(--border-2);
-    filter: drop-shadow(var(--shadow-2));
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-  }
-
-  h3 {
-    margin: 0 0 0.5rem 0;
-    font-family: var(--font-family);
-    font-weight: 800;
-    font-size: 1.25rem;
-    color: var(--text-color);
-  }
-
-  p {
-    margin: 0 0 0.75rem 0;
-    color: var(--text-muted);
-    max-width: 65ch;
-  }
-
-  code {
-    font-family: var(--mono-font);
-    font-size: 0.95em;
-    padding: 0.05rem 0.35rem;
-    border-radius: 0.35rem;
-    background: var(--surface-3);
-    border: 1px solid var(--border-1);
-  }
-}
-
-.card-cta {
-  display: inline-block;
-  font-family: var(--retro-font);
-  font-size: 0.75rem;
-  opacity: 0.95;
-  color: var(--link-color);
 }
 
 .footer {
@@ -347,7 +235,7 @@ h1 {
   }
 }
 
-/* Desktop layout: left “Featured labs” column + right cards */
+/* Desktop layout: left "Featured labs" column + right cards */
 @media (min-width: 1000px) {
   .cards {
     display: grid;

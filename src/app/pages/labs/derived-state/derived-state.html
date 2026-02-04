@@ -1,4 +1,4 @@
-<section class="labs-header">
+<section class="ui-labs-header">
   <div class="top-row">
     <h1>Derived State</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
@@ -9,9 +9,9 @@
   </p>
 </section>
 
-<section class="wrap" aria-label="Derived state lab">
-  <article class="panel">
-    <header class="panel-header">
+<section class="ui-wrap" aria-label="Derived state lab">
+  <article class="ui-panel">
+    <header class="ui-panel-header">
       <h2>What it does</h2>
       <p>
         This lab stores only the raw form inputs as state.
@@ -25,7 +25,7 @@
         <span class="label">Name</span>
         <input
           #nameInput
-          class="input"
+          class="ui-input"
           type="text"
           autocomplete="name"
           [value]="name()"
@@ -39,7 +39,7 @@
         <span class="label">Email</span>
         <input
           #emailInput
-          class="input"
+          class="ui-input"
           type="email"
           autocomplete="email"
           [value]="email()"
@@ -54,7 +54,7 @@
         <span class="label">Username</span>
         <input
           #usernameInput
-          class="input"
+          class="ui-input"
           type="text"
           autocomplete="username"
           [value]="username()"
@@ -67,15 +67,15 @@
     </div>
 
     <section class="readout" aria-label="Derived output">
-      <div class="pill">
+      <div class="ui-readout-pill">
         canSubmit: <strong>{{ canSubmit() }}</strong>
       </div>
 
-      <div class="pill">
+      <div class="ui-readout-pill">
         emailOk: <strong>{{ emailOk() }}</strong>
       </div>
 
-      <div class="pill">
+      <div class="ui-readout-pill">
         usernameOk: <strong>{{ usernameOk() }}</strong>
       </div>
     </section>
@@ -84,7 +84,7 @@
       <h3>Current issues</h3>
 
       @if (issues().length === 0) {
-        <p class="muted">None. The form is ready.</p>
+        <p class="ui-muted">None. The form is ready.</p>
       } @else {
         <ul>
           @for (issue of issues(); track issue) {
@@ -95,16 +95,16 @@
     </section>
 
     <div class="actions" role="group" aria-label="Actions">
-      <button type="button" class="btn primary" [disabled]="!canSubmit()">
+      <button type="button" class="ui-btn ui-btn--gradient" [disabled]="!canSubmit()">
         Submit (demo)
       </button>
 
-      <button type="button" class="btn secondary" (click)="reset()">
+      <button type="button" class="ui-btn ui-btn--plain" (click)="reset()">
         Reset
       </button>
     </div>
 
-    <div class="notes">
+    <div class="ui-notes">
       <h3>What it’s meant to teach</h3>
       <ul>
         <li><strong>Store inputs:</strong> name/email/username are the only stored state.</li>

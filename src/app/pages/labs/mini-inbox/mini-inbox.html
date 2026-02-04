@@ -1,4 +1,4 @@
-<section class="labs-header">
+<section class="ui-labs-header">
   <div class="top-row">
     <h1>Mini Inbox</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
@@ -10,13 +10,13 @@
   </p>
 </section>
 
-<section class="wrap" aria-label="Mini inbox hands-on lab">
-  <article class="panel">
+<section class="ui-wrap" aria-label="Mini inbox hands-on lab">
+  <article class="ui-panel">
     <!-- ============================
          ORIENTATION
     ============================= -->
 
-    <header class="panel-header">
+    <header class="ui-panel-header">
       <h2>What you’re looking at</h2>
       <p>
         This page is a small Angular feature built as a single screen.
@@ -33,7 +33,7 @@
       </p>
     </header>
 
-    <section class="panel-header">
+    <section class="ui-panel-header">
       <h2>What Angular is doing here</h2>
       <ul>
         <li>The message list is rendered from state.</li>
@@ -157,15 +157,15 @@
               </div>
 
               <div class="detail-actions" role="group" aria-label="Message actions">
-                <button type="button" class="btn" (click)="toggleRead(inbox.selected()!.id)">
+                <button type="button" class="ui-btn" (click)="toggleRead(inbox.selected()!.id)">
                   @if (inbox.selected()!.read) { Mark unread } @else { Mark read }
                 </button>
 
-                <button type="button" class="btn" (click)="toggleStar(inbox.selected()!.id)">
+                <button type="button" class="ui-btn" (click)="toggleStar(inbox.selected()!.id)">
                   @if (inbox.selected()!.starred) { Unstar } @else { Star }
                 </button>
 
-                <button type="button" class="btn danger" (click)="archive(inbox.selected()!.id)">
+                <button type="button" class="ui-btn danger" (click)="archive(inbox.selected()!.id)">
                   Archive
                 </button>
               </div>
@@ -228,14 +228,14 @@
           <div class="compose-actions" role="group" aria-label="Compose actions">
             <button
               type="button"
-              class="btn primary"
+              class="ui-btn ui-btn--gradient"
               [disabled]="!canCompose()"
               (click)="compose()"
             >
               Send (demo)
             </button>
 
-            <button type="button" class="btn" (click)="resetDemo()">
+            <button type="button" class="ui-btn" (click)="resetDemo()">
               Reset demo data
             </button>
           </div>

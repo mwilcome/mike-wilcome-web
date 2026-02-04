@@ -1,4 +1,4 @@
-<section class="labs-header">
+<section class="ui-labs-header">
   <div class="top-row">
     <h1>Themes</h1>
     <a class="back" routerLink="/labs">← Back to Labs</a>
@@ -10,9 +10,9 @@
   </p>
 </section>
 
-<section class="wrap" aria-label="Theme lab">
-  <article class="panel">
-    <header class="panel-header">
+<section class="ui-wrap" aria-label="Theme lab">
+  <article class="ui-panel">
+    <header class="ui-panel-header">
       <h2>What it does</h2>
       <p>
         Pick a theme. The app updates <span class="mono">html[data-theme]</span>.
@@ -37,8 +37,8 @@
       </div>
 
       <div class="readout" aria-label="Current theme">
-        <div class="pill">Current: <strong>{{ theme() }}</strong></div>
-        <button type="button" class="btn ghost" (click)="refreshTokens()">
+        <div class="ui-readout-pill">Current: <strong>{{ theme() }}</strong></div>
+        <button type="button" class="ui-btn ui-btn--ghost" (click)="refreshTokens()">
           Refresh tokens
         </button>
       </div>
@@ -47,7 +47,7 @@
     <section class="inspector" aria-label="Token inspector">
       <div class="inspector-head">
         <h3>Token inspector</h3>
-        <p class="muted">
+        <p class="ui-muted">
           These are the resolved values from <span class="mono">getComputedStyle(document.documentElement)</span>.
           This is what your components actually see when they use <span class="mono">var(--...)</span>.
         </p>
@@ -68,7 +68,7 @@
               @if (row.preview) {
                 <span class="swatch" [style.background]="row.preview" aria-hidden="true"></span>
               } @else {
-                <span class="muted">—</span>
+                <span class="ui-muted">—</span>
               }
             </div>
           </div>
@@ -78,7 +78,7 @@
 
     <section class="demo" aria-label="Example UI using tokens">
       <h3>Example UI</h3>
-      <p class="muted">
+      <p class="ui-muted">
         This block doesn’t pick colors. It uses the same tokens your real pages use.
       </p>
 
@@ -90,14 +90,14 @@
         </div>
 
         <div class="demo-actions">
-          <button type="button" class="btn primary">Primary</button>
-          <button type="button" class="btn secondary">Secondary</button>
+          <button type="button" class="ui-btn ui-btn--gradient">Primary</button>
+          <button type="button" class="ui-btn ui-btn--plain">Secondary</button>
           <a class="demo-link" href="javascript:void(0)">Link</a>
         </div>
       </div>
     </section>
 
-    <div class="notes">
+    <div class="ui-notes">
       <h3>What it’s meant to teach</h3>
       <ul>
         <li><strong>Source of truth:</strong> token values live in <span class="mono">styles.scss</span>.</li>

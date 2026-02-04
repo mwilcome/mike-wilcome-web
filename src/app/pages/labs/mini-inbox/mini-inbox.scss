@@ -5,92 +5,57 @@
   color: var(--text-color);
 }
 
-.labs-header {
-  text-align: center;
-  padding: 2.5rem 1.5rem 1.5rem;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-
-  h1 {
-    margin: 0;
-    font-family: var(--retro-font);
-    font-size: 2.5rem;
-    filter: drop-shadow(var(--title-glow));
-  }
-
-  .sub {
-    margin: 0.9rem auto 0;
-    max-width: 78ch;
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    font-family: var(--font-family);
-  }
-
-  .top-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .back {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    border: 1px solid var(--border-1);
-    background: var(--surface-3);
-    color: var(--link-color);
-    text-decoration: none;
-    font-family: var(--retro-font);
-    font-size: 0.75rem;
-
-    &:hover {
-      border-color: var(--border-2);
-      filter: drop-shadow(var(--shadow-2));
-    }
-
-    &:focus-visible {
-      outline: 3px solid var(--accent-color);
-      outline-offset: 3px;
-    }
-  }
-}
-
-.wrap {
-  max-width: 1100px;
-  margin: 0 auto;
+/* Override shared wrap padding for inbox layout */
+.ui-wrap {
   padding: 1.5rem 1.5rem 3rem;
 }
 
-.panel {
-  border-radius: 1.25rem;
-  border: 1px solid var(--border-1);
+/* Override shared panel for inbox surface */
+.ui-panel {
   background: var(--surface-2);
-  box-shadow: var(--shadow-1);
   padding: 1.25rem;
 }
 
-.panel-header {
+/* Override shared panel-header for inbox layout */
+.ui-panel-header {
   display: grid;
   gap: 0.4rem;
   margin-bottom: 1rem;
 
   h2 {
-    margin: 0;
     font-size: 1.4rem;
-    font-weight: 900;
-    font-family: var(--font-family);
   }
 
   p {
-    margin: 0;
-    color: var(--text-muted);
-    font-family: var(--font-family);
     line-height: 1.55;
   }
+}
+
+/* Subtitle override for mini-inbox */
+.sub {
+  max-width: 78ch;
+  font-size: 1.05rem;
+}
+
+/* Override shared button for compact inbox buttons */
+.ui-btn {
+  padding: 0.55rem 0.85rem;
+  font-weight: 800;
+  background: var(--surface-1);
+
+  &:hover:not(:disabled) {
+    transform: none;
+    filter: none;
+    box-shadow: var(--shadow-1);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.danger {
+  border-color: var(--border-1);
 }
 
 .notice {
@@ -365,42 +330,6 @@
   flex-wrap: wrap;
 }
 
-.btn {
-  cursor: pointer;
-  border-radius: 0.9rem;
-  border: 1px solid var(--border-1);
-  background: var(--surface-1);
-  color: var(--text-color);
-  padding: 0.55rem 0.85rem;
-  font-weight: 800;
-  font-family: var(--font-family);
-
-  &:hover {
-    border-color: var(--border-2);
-    box-shadow: var(--shadow-1);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-}
-
-.primary {
-  background: linear-gradient(90deg, var(--primary-color), var(--primary-hover));
-  border-color: transparent;
-  color: white;
-}
-
-.danger {
-  border-color: var(--border-1);
-}
-
 .notes {
   margin-top: 1.25rem;
 
@@ -431,10 +360,6 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-.mono {
-  font-family: var(--mono-font);
 }
 
 .empty {
