@@ -6,5 +6,8 @@ export const routes: Routes = [
   // Labs section (hub + child labs)
   { path: 'labs', loadChildren: () => import('./pages/labs/labs.routes').then(m => m.LABS_ROUTES) },
 
+  // Bad Designs section
+  { path: 'bad-designs', loadChildren: () => import('./pages/bad-designs/bad-designs.routes').then(m => m.BAD_DESIGNS_ROUTES) },
+
   { path: '**', redirectTo: '' }
 ];
