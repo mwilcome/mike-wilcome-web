@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img" aria-label="Cookie (raw)">
+  <defs>
+    <style>
+      .dough { fill: #f2d7a6; stroke: rgba(60, 40, 20, 0.25); stroke-width: 3; }
+      .chip  { fill: rgba(60, 40, 20, 0.45); }
+      .shine { fill: rgba(255,255,255,0.25); }
+    </style>
+  </defs>
+
+  <circle cx="70" cy="70" r="56" class="dough"/>
+  <circle cx="52" cy="52" r="6" class="chip"/>
+  <circle cx="86" cy="50" r="5" class="chip"/>
+  <circle cx="90" cy="82" r="7" class="chip"/>
+  <circle cx="58" cy="86" r="5" class="chip"/>
+  <circle cx="70" cy="68" r="4" class="chip"/>
+  <path d="M38 54 C48 32, 78 28, 92 44 C76 38, 54 40, 38 54 Z" class="shine"/>
+</svg>

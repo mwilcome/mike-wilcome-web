@@ -1,0 +1,147 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text-color);
+}
+
+.content {
+  margin-top: 1.25rem;
+  border: 1px dashed var(--border-1);
+  border-radius: 1rem;
+  background: var(--surface-2);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.blurb {
+  margin: 0;
+  text-align: center;
+  color: var(--text-muted);
+  max-width: 50ch;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 280px;
+}
+
+.cookie-row {
+  display: flex;
+  justify-content: center;
+}
+
+.cookie {
+  width: 96px;
+  height: 96px;
+  cursor: grab;
+  transition: transform 0.2s ease, filter 0.2s ease;
+
+  &:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(var(--shadow-2));
+  }
+
+  &:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 6px;
+    border-radius: 50%;
+  }
+}
+
+.drop-target {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px dashed var(--border-1);
+  border-radius: 1rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+  &:hover {
+    border-color: var(--border-2);
+    background: var(--surface-3);
+  }
+}
+
+.drop-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--mono-font);
+}
+
+.baking-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  .oven-baking {
+    width: 96px;
+    height: 96px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+.baking-label {
+  font-family: var(--mono-font);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.choice-targets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  font-weight: 800;
+  font-size: 1.15rem;
+
+  &.accepted {
+    color: var(--accent-color);
+  }
+
+  &.rejected {
+    color: var(--text-muted);
+  }
+}
+
+.reset-btn {
+  align-self: center;
+}

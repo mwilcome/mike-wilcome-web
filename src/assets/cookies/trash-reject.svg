@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Trash (reject)">
+  <defs>
+    <style>
+      .bin   { fill: var(--surface-1, #f7f9fb); stroke: var(--line-2, #aab7c4); stroke-width: 3; }
+      .lid   { fill: var(--surface-2, #e9eef3); stroke: var(--line-2, #aab7c4); stroke-width: 3; }
+      .slat  { stroke: rgba(20,40,60,0.25); stroke-width: 2; }
+      .label { fill: var(--brand-700, #124664); font: 700 14px system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+
+  <rect x="44" y="28" width="92" height="18" rx="6" class="lid"/>
+  <rect x="58" y="18" width="64" height="14" rx="7" class="lid"/>
+  <rect x="50" y="46" width="80" height="94" rx="10" class="bin"/>
+
+  <line x1="70" y1="58" x2="70" y2="130" class="slat"/>
+  <line x1="90" y1="58" x2="90" y2="130" class="slat"/>
+  <line x1="110" y1="58" x2="110" y2="130" class="slat"/>
+
+  <text x="90" y="168" text-anchor="middle" class="label">REJECT</text>
+</svg>

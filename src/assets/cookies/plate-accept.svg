@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" role="img" aria-label="Plate (accept)">
+  <defs>
+    <style>
+      .rim   { fill: var(--surface-0, #ffffff); stroke: var(--line-2, #aab7c4); stroke-width: 3; }
+      .well  { fill: rgba(20,40,60,0.06); }
+      .label { fill: var(--brand-700, #124664); font: 700 14px system-ui, -apple-system, Segoe UI, Roboto, Arial; letter-spacing: 0.08em; }
+    </style>
+  </defs>
+
+  <ellipse cx="110" cy="74" rx="88" ry="44" class="rim"/>
+  <ellipse cx="110" cy="74" rx="62" ry="28" class="well"/>
+  <text x="110" y="128" text-anchor="middle" class="label">ACCEPT</text>
+</svg>

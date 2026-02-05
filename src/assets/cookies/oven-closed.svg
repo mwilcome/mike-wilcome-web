@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Oven (closed)">
+  <defs>
+    <style>
+      .frame { fill: var(--surface-2, #e9eef3); stroke: var(--line-2, #aab7c4); stroke-width: 3; }
+      .panel { fill: var(--surface-1, #f7f9fb); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+      .dark  { fill: var(--surface-4, #cfd8e3); }
+      .glass { fill: rgba(20, 40, 60, 0.10); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+      .knob  { fill: var(--surface-0, #ffffff); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- outer -->
+  <rect x="20" y="15" width="200" height="170" rx="14" class="frame"/>
+  <!-- control panel -->
+  <rect x="35" y="28" width="170" height="42" rx="10" class="panel"/>
+  <circle cx="70" cy="49" r="10" class="knob"/>
+  <circle cx="110" cy="49" r="10" class="knob"/>
+  <circle cx="150" cy="49" r="10" class="knob"/>
+  <rect x="175" y="39" width="22" height="20" rx="4" class="dark"/>
+
+  <!-- door -->
+  <rect x="45" y="80" width="150" height="90" rx="10" class="panel"/>
+  <rect x="65" y="98" width="110" height="56" rx="8" class="glass"/>
+  <!-- handle -->
+  <rect x="172" y="120" width="18" height="10" rx="5" class="dark"/>
+</svg>

@@ -1,0 +1,111 @@
+<section class="ui-labs-header">
+  <div class="top-row">
+    <h1>Terrible Cookie Accepter Form</h1>
+    <a class="back" routerLink="/bad-designs">← Back to Bad Designs</a>
+  </div>
+
+  <p class="sub">
+    An accept cookies form that is kind of a pain to use.
+  </p>
+</section>
+
+<section class="ui-wrap" aria-label="Cookie bad design">
+  <article class="ui-panel">
+    <header class="ui-panel-header">
+      <h2>What it does</h2>
+      <p>
+        This is a cookie acceptance form that is slightly frustrating (even more so than usual).
+      </p>
+    </header>
+
+    <div class="content">
+      <p class="blurb">
+        Cookies are used to enhance your experience. To accept, bake the dough and
+        serve it on the plate. To reject, toss the baked cookie in the trash.
+      </p>
+
+      <div class="stage">
+        @if (phase() === 'raw') {
+          <div class="cookie-row">
+            <img
+              ngSrc="assets/cookies/cookie-raw.svg"
+              alt="Raw cookie dough"
+              class="cookie"
+              draggable="true"
+              tabindex="0"
+              (dragstart)="onDragStart($event)"
+              (keydown)="onRawKeydown($event)"
+              height="16" width="16"/>
+          </div>
+
+          <div
+            class="drop-target oven"
+            (dragover)="onOvenDragOver($event)"
+            (drop)="onOvenDrop($event)"
+          >
+            <img ngSrc="assets/cookies/oven-open.svg" alt="Open oven — drop cookie here" height="16" width="16"/>
+            <span class="drop-hint">Drag cookie here or press Enter</span>
+          </div>
+        }
+
+        @if (phase() === 'baking') {
+          <div class="baking-row">
+            <img ngSrc="assets/cookies/oven-closed.svg" alt="Oven baking cookie" class="oven-baking" height="16"
+                 width="16"/>
+            <span class="baking-label">Baking…</span>
+          </div>
+        }
+
+        @if (phase() === 'done') {
+          <div class="cookie-row">
+            <img
+              ngSrc="assets/cookies/cookie-baked.svg"
+              alt="Baked cookie"
+              class="cookie"
+              draggable="true"
+              tabindex="0"
+              (dragstart)="onDragStart($event)"
+              (keydown)="onBakedKeydown($event)"
+              height="16" width="16"/>
+          </div>
+
+          <div class="choice-targets">
+            <div
+              class="drop-target plate"
+              (dragover)="onPlateDragOver($event)"
+              (drop)="onPlateDrop($event)"
+            >
+              <img ngSrc="assets/cookies/plate-accept.svg" alt="Plate — accept cookies" height="16" width="16"/>
+              <span class="drop-hint">Accept</span>
+            </div>
+
+            <div
+              class="drop-target trash"
+              (dragover)="onTrashDragOver($event)"
+              (drop)="onTrashDrop($event)"
+            >
+              <img ngSrc="assets/cookies/trash-reject.svg" alt="Trash — reject cookies" height="16" width="16"/>
+              <span class="drop-hint">Reject</span>
+            </div>
+          </div>
+        }
+
+        @if (phase() === 'accepted') {
+          <div class="result accepted">
+            <span>Cookies accepted!</span>
+          </div>
+        }
+
+        @if (phase() === 'rejected') {
+          <div class="result rejected">
+            <span>Cookies rejected.</span>
+          </div>
+        }
+      </div>
+
+      <button class="ui-btn ui-btn--ghost reset-btn" (click)="reset()">
+        Reset
+      </button>
+    </div>
+  </article>
+</section>

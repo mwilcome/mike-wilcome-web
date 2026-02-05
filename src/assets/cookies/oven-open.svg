@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Oven (open)">
+  <defs>
+    <style>
+      .frame { fill: var(--surface-2, #e9eef3); stroke: var(--line-2, #aab7c4); stroke-width: 3; }
+      .panel { fill: var(--surface-1, #f7f9fb); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+      .cavity{ fill: rgba(20, 40, 60, 0.12); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+      .rack { stroke: rgba(20, 40, 60, 0.25); stroke-width: 2; }
+      .door { fill: rgba(20, 40, 60, 0.06); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+      .hinge{ fill: var(--surface-4, #cfd8e3); }
+      .knob  { fill: var(--surface-0, #ffffff); stroke: var(--line-2, #aab7c4); stroke-width: 2; }
+      .dark  { fill: var(--surface-4, #cfd8e3); }
+    </style>
+  </defs>
+
+  <rect x="20" y="15" width="200" height="170" rx="14" class="frame"/>
+  <rect x="35" y="28" width="170" height="42" rx="10" class="panel"/>
+  <circle cx="70" cy="49" r="10" class="knob"/>
+  <circle cx="110" cy="49" r="10" class="knob"/>
+  <circle cx="150" cy="49" r="10" class="knob"/>
+  <rect x="175" y="39" width="22" height="20" rx="4" class="dark"/>
+
+  <!-- open cavity -->
+  <rect x="55" y="78" width="130" height="72" rx="10" class="cavity"/>
+  <line x1="65" y1="95" x2="175" y2="95" class="rack"/>
+  <line x1="65" y1="113" x2="175" y2="113" class="rack"/>
+  <line x1="65" y1="131" x2="175" y2="131" class="rack"/>
+
+  <!-- door flipped down -->
+  <path d="M50 152 H190 L202 182 H38 Z" class="door"/>
+  <rect x="112" y="166" width="16" height="6" rx="3" class="hinge"/>
+</svg>

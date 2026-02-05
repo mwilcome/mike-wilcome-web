@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img" aria-label="Cookie (baked)">
+  <defs>
+    <style>
+      .dough { fill: #d8a05c; stroke: rgba(60, 40, 20, 0.35); stroke-width: 3; }
+      .chip  { fill: rgba(40, 25, 10, 0.65); }
+      .crack { stroke: rgba(60, 40, 20, 0.35); stroke-width: 2; fill: none; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <circle cx="70" cy="70" r="56" class="dough"/>
+  <circle cx="52" cy="52" r="6" class="chip"/>
+  <circle cx="86" cy="50" r="5" class="chip"/>
+  <circle cx="90" cy="82" r="7" class="chip"/>
+  <circle cx="58" cy="86" r="5" class="chip"/>
+  <circle cx="70" cy="68" r="4" class="chip"/>
+  <path d="M48 74 C56 70, 64 70, 72 74" class="crack"/>
+  <path d="M78 60 C84 64, 88 70, 90 76" class="crack"/>
+</svg>
