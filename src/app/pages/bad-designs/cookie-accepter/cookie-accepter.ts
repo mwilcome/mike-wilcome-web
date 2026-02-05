@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, OnDestroy, viewChild, ElementRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {NgOptimizedImage} from '@angular/common';
 
@@ -14,6 +14,7 @@ type Phase = 'raw' | 'baking' | 'done' | 'accepted' | 'rejected';
 })
 export class CookieAccepter implements OnDestroy {
   readonly phase = signal<Phase>('raw');
+  private readonly plateTarget = viewChild<ElementRef<HTMLElement>>('plateTarget');
   private bakingTimer: ReturnType<typeof setTimeout> | null = null;
 
   startBaking(): void {
@@ -82,7 +83,19 @@ export class CookieAccepter implements OnDestroy {
 
   onBakedKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter') {
+      this.plateTarget()?.nativeElement.focus();
+    }
+  }
+
+  onPlateKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
       this.accept();
+    }
+  }
+
+  onTrashKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      this.reject();
     }
   }
 

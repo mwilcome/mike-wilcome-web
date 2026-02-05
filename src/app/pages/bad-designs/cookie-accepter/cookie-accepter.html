@@ -71,9 +71,12 @@
 
           <div class="choice-targets">
             <div
+              #plateTarget
               class="drop-target plate"
+              tabindex="0"
               (dragover)="onPlateDragOver($event)"
               (drop)="onPlateDrop($event)"
+              (keydown)="onPlateKeydown($event)"
             >
               <img ngSrc="assets/cookies/plate-accept.svg" alt="Plate — accept cookies" height="16" width="16"/>
               <span class="drop-hint">Accept</span>
@@ -81,8 +84,10 @@
 
             <div
               class="drop-target trash"
+              tabindex="0"
               (dragover)="onTrashDragOver($event)"
               (drop)="onTrashDrop($event)"
+              (keydown)="onTrashKeydown($event)"
             >
               <img ngSrc="assets/cookies/trash-reject.svg" alt="Trash — reject cookies" height="16" width="16"/>
               <span class="drop-hint">Reject</span>
